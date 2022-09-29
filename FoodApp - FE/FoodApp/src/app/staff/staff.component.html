@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="orders" style="margin-top: 30px">
+    <div class="input-group">
+      <input
+        type="search"
+        class="form-control rounded"
+        placeholder="Search for a particular Order"
+        aria-label="Search"
+        aria-describedby="search-addon"
+      />
+      <button type="button" class="btn btn-outline-primary">Find Order</button>
+    </div>
+    <br /><br />
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <!-- ngFor in this div to repeat the cards -->
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <img
+              src="../../assets/img/order.jpg"
+              class="card-img-top"
+              alt="Error Loading Image"
+              height="300px"
+            />
+            <h5 class="card-title">Order ID :</h5>
+            <h6>Name of the Customer :</h6>
+            <h6>Contact Number :</h6>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Total Amount of the Order :</li>
+            <li class="list-group-item">Created At :</li>
+            <li class="list-group-item">Delivered At :</li>
+            <div class="card-footer text-muted">(Status of the Order)</div>
+          </ul>
+
+          <div class="card-body text-center">
+            <button class="btn btn-info">View Order Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
