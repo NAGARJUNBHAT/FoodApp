@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "61f7581d-87c2-4984-85e5-6bffaf46266e",
+		"name": "002. Menu Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23433216"
+	},
+	"item": [
+		{
+			"name": "Add Menu By User Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/menu/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Menu by Manager ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/menu/manager/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu",
+						"manager",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Menu by Menu ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/menu/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
