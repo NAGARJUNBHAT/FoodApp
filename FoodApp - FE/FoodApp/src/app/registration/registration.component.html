@@ -12,6 +12,7 @@
       Happy to see you here! <br />
       Welcome!
     </h2>
+
     <div class="card-body">
       <img
         src="../../assets/img/img2.jpg"
@@ -21,46 +22,60 @@
       <br /><br />
       <h2>Please Register Now !</h2>
 
-      <form>
+      <form #regForm="ngForm" (ngSubmit)="register(regForm)">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
+          <label for="Name" class="form-label"
             >Enter Your Name</label
           >
           <input
-            type="email"
+            name="name"
+            #name="ngModel" ngModel
+            type="text"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="inputName"
             placeholder="Enter your name here"
+            required
           />
+          <span *ngIf="name.invalid && name.touched" 
+            style="color: red;">Name required</span>
         </div>
 
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
+          <label for="Email" class="form-label"
             >Enter Your Email address</label
           >
           <input
+            name="email"
+            #email="ngModel" ngModel
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="inputEmail"
             placeholder="Enter your email address here"
+            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" 
+            required
           />
+          <span *ngIf="email.invalid && email.touched"
+            style="color: red;">Invalid email</span>
         </div>
 
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <label for="Password" class="form-label">Password</label>
           <input
+            name="password"
+            #password="ngModel" ngModel
             type="password"
             class="form-control"
-            id="exampleInputPassword1"
+            id="inputPassword"
             placeholder="Enter your password here"
+            required
           />
+          <span *ngIf="password.invalid && password.touched" 
+            style="color: red;">Password required</span>
         </div>
 
         <div class="form-group mb-3">
-          <label for="exampleFormControlSelect1">Please Select Your Role</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <label for="Role">Please Select Your Role</label>
+          <select class="form-control" id="inputSelect" #role="ngModel" ngModel>
             <option>Choose Role</option>
             <option>User</option>
             <option>Manager</option>
@@ -68,7 +83,7 @@
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Register Yourself</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid">Register Yourself</button>
       </form>
     </div>
   </div>
