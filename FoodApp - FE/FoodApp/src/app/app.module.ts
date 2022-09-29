@@ -24,7 +24,7 @@ import { StaffComponent } from './staff/staff.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule.
+    HttpClientModule,
     FormsModule
   ],
   providers: [],

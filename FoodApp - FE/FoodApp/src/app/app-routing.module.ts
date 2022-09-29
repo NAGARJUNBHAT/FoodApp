@@ -4,13 +4,14 @@ import { RegistrationComponent } from './registration/registration.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: HomepageComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
 
-  { path: 'manager', component:ManagerDashboardComponent}
+  { path: 'manager', component:ManagerDashboardComponent},
   { path: 'staff', component: StaffComponent },
 
 ];
