@@ -1,41 +1,90 @@
 <div class="container">
+  <div
+    class="card text-center"
+    style="
+      margin-top: 20px;
+      width: 50rem;
+      margin-left: auto;
+      margin-right: auto;
+    "
+  >
+    <h2>
+      Happy to see you here! <br />
+      Welcome!
+    </h2>
 
-    <div class="card text-center" style="width: 18rem;"> 
-        <div class="card-body"> 
+    <div class="card-body">
+      <img
+        src="../../assets/img/img2.jpg"
+        alt="Error Loading Image"
+        height="200px"
+      />
+      <br /><br />
+      <h2>Please Register Now !</h2>
 
-            <h2>Register Now !</h2>
-
-            <form>
-                
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                
-                <div class="input-group mb-3">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">User</a></li>
-                        <li><a class="dropdown-item" href="#">Staff</a></li>
-                        <li><a class="dropdown-item" href="#">Branch Manager</a></li>
-                    </ul>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                    </div>
-                
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-        
-                </form>
+      <form #regForm="ngForm" (ngSubmit)="register(regForm)">
+        <div class="mb-3">
+          <label for="Name" class="form-label"
+            >Enter Your Name</label
+          >
+          <input
+            name="name"
+            #name="ngModel" ngModel
+            type="text"
+            class="form-control"
+            id="inputName"
+            placeholder="Enter your name here"
+            required
+          />
+          <span *ngIf="name.invalid && name.touched" 
+            style="color: red;">Name required</span>
         </div>
-    </div>
 
+        <div class="mb-3">
+          <label for="Email" class="form-label"
+            >Enter Your Email address</label
+          >
+          <input
+            name="email"
+            #email="ngModel" ngModel
+            type="email"
+            class="form-control"
+            id="inputEmail"
+            placeholder="Enter your email address here"
+            pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" 
+            required
+          />
+          <span *ngIf="email.invalid && email.touched"
+            style="color: red;">Invalid email</span>
+        </div>
+
+        <div class="mb-3">
+          <label for="Password" class="form-label">Password</label>
+          <input
+            name="password"
+            #password="ngModel" ngModel
+            type="password"
+            class="form-control"
+            id="inputPassword"
+            placeholder="Enter your password here"
+            required
+          />
+          <span *ngIf="password.invalid && password.touched" 
+            style="color: red;">Password required</span>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="Role">Please Select Your Role</label>
+          <select class="form-control" id="inputSelect" #role="ngModel" ngModel>
+            <option>Choose Role</option>
+            <option>User</option>
+            <option>Manager</option>
+            <option>Staff</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid">Register Yourself</button>
+      </form>
+    </div>
+  </div>
 </div>
