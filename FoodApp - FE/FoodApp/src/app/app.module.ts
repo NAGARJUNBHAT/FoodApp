@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
-import {HttpClientModule} from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { StaffComponent } from './staff/staff.component';
 
@@ -19,15 +19,10 @@ import { StaffComponent } from './staff/staff.component';
     RegistrationComponent,
 
     ManagerDashboardComponent,
-    StaffComponent
+    StaffComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule.
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
