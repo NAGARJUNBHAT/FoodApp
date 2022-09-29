@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "e0293fb2-b7b8-479d-b829-9c8a6cf4aff5",
+		"name": "003. Food Product Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23433216"
+	},
+	"item": [
+		{
+			"name": "Add Food Product By Menu ID",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"M1 FP1\",\r\n    \"type\" : \"T1\",\r\n    \"about\" : \"Menu 1 Food Product 1\",\r\n    \"availability\" : \"true\",\r\n    \"price\" : \"945\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/foodproduct/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodproduct",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Food Products of a Menu by Menu ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/foodproduct/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodproduct",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Food Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/foodproduct",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodproduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Food Product By Food Product ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/foodproduct/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodproduct",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

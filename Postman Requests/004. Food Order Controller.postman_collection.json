@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "5604d454-deb3-4038-b141-56009dd178d7",
+		"name": "004. Food Order Controller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23433216"
+	},
+	"item": [
+		{
+			"name": "Add Food Order by Staff Id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\" : \"true\",\r\n    \"totalPrice\" : \"345\",\r\n    \"orderCreatedTime\" : \"2020-03-02\",\r\n    \"orderDeliveryTime\" : \"2020-04-02\",\r\n    \"customerName\" : \"Cust1\",\r\n    \"contactNumber\" : \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/foodorder/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodorder",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Orders of a Staff by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/foodorder/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodorder",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Food Order By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/foodorderbyid/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodorderbyid",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Food Order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"1\",\r\n    \"status\" : \"true\",\r\n    \"totalPrice\" : \"500\",\r\n    \"orderCreatedTime\" : \"2020-03-02\",\r\n    \"orderDeliveryTime\" : \"2020-04-02\",\r\n    \"customerName\" : \"Cust1\",\r\n    \"contactNumber\" : \"99\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/foodorder",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodorder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Food Order By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/foodorder/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"foodorder",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
