@@ -11,13 +11,14 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
 import {HttpClientModule} from '@angular/common/http'
 
 import { StaffComponent } from './staff/staff.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-
+    HomepageComponent,
     ManagerDashboardComponent,
     StaffComponent
   ],
