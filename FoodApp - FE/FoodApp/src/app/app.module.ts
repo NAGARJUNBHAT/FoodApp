@@ -11,6 +11,7 @@ import {HttpClientModule} from '@angular/common/http'
 import { StaffComponent } from './staff/staff.component';
 import { AddFpComponent } from './add-fp/add-fp.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { EditFpComponent } from './edit-fp/edit-fp.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HomepageComponent } from './homepage/homepage.component';
     HomepageComponent,
     ManagerDashboardComponent,
     StaffComponent,
-    AddFpComponent
+    AddFpComponent,
+    EditFpComponent
   ],
 
   imports: [
