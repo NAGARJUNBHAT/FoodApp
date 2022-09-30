@@ -1,4 +1,10 @@
+
 <div style="margin: 4% auto;" class="container">
+  <h6>{{manager.name}}<br><br>
+    {{manager.email}}<br><br>
+   </h6>
+</div>
+<div style="margin: 2% auto;" class="container">
     <button type="button" class="btn btn-primary" [routerLink]="['/add-fp']">Add Food product</button>
 </div>
 <div style="margin: 4% auto;" class="container">
@@ -25,7 +31,7 @@
             <td>{{r.avaialbility}}</td>
             <td>{{r.about}}</td>
             <td>{{r.price}}</td>
-            <td><button type="button" class="btn btn-secondary" (click)="editfp(r.id)">Edit</button></td>
+            <td><button type="button" class="btn btn-secondary" [routerLink]="['/edit-fp']">Edit</button></td>
             <td><button type="button" class="btn btn-danger" (click)="deletefp(r.id)">Delete</button></td>
 
           </tr>

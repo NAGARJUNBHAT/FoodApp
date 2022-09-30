@@ -9,7 +9,7 @@
         #product='ngModel' 
         ngModel 
         required>
-        <span *ngIf="product.touched" style="color: red;">Please fill out this field</span>
+        <span *ngIf="product.touched && product.invalid" style="color: red;">Please fill out this field</span>
     </div>
     <div class="mb-3">
         <label for="type" class="form-label">Type </label>
@@ -18,7 +18,7 @@
         #type='ngModel' 
         ngModel 
         required>
-        <span *ngIf="type.touched" style="color: red;">Please fill out this field</span>
+        <span *ngIf="type.touched && type.invalid" style="color: red;">Please fill out this field</span>
     </div>
     <div class="mb-3">
         <label for="about" class="form-label">About </label>
@@ -27,14 +27,15 @@
         #about='ngModel' 
         ngModel 
         required>
-        <span *ngIf="about.touched" style="color: red;">Please fill out this field</span>
+        <span *ngIf="about.touched && about.invalid" style="color: red;">Please fill out this field</span>
     </div>
     <div class="mb-3">
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value=false id="flexCheckDefault"
+            <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" checked
             name="avail" #avail='ngModel' ngModel>
             <label class="form-check-label" for="flexCheckDefault">Is available?</label>
         </div>
+        
         <!-- <select class="form-control" name="availability" #availability="ngModel" ngModel required>
             <option value="" disabled selected><small>Choose availability</small></option>
             <option selected>Available</option>
@@ -47,7 +48,7 @@
         #price='ngModel' 
         ngModel 
         required>
-        <span *ngIf="price.touched" style="color: red;">Please fill out this field</span>
+        <span *ngIf="price.touched && price.invalid" style="color: red;">Please fill out this field</span>
     </div>
       
     <button [disabled]="!regForm.valid" type="submit" class="btn btn-primary">Submit</button>
