@@ -13,7 +13,7 @@
     <br /><br />
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <!-- ngFor in this div to repeat the cards -->
-      <div class="col">
+      <div class="col" *ngFor="let fo of allOrders.data">
         <div class="card">
           <div class="card-body">
             <img
@@ -22,15 +22,26 @@
               alt="Error Loading Image"
               height="300px"
             />
-            <h5 class="card-title">Order ID :</h5>
-            <h6>Name of the Customer :</h6>
-            <h6>Contact Number :</h6>
+            <h5 class="card-title">Order ID : {{ fo.id }}</h5>
+            <h6>Name of the Customer : {{ fo.customerName }}</h6>
+            <h6>Contact Number : {{ fo.contactNumber }}</h6>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total Amount of the Order :</li>
-            <li class="list-group-item">Created At :</li>
-            <li class="list-group-item">Delivered At :</li>
-            <div class="card-footer text-muted">(Status of the Order)</div>
+            <li class="list-group-item">
+              Total Amount of the Order : {{ fo.totalPrice }}
+            </li>
+            <li class="list-group-item">
+              Created At : {{ fo.orderCreatedTime }}
+            </li>
+            <li class="list-group-item">
+              Delivered At : {{ fo.orderDeliveryTime }}
+            </li>
+            <div
+              class="card-footer text-success"
+              style="text-align: center; font-size: xx-large"
+            >
+              {{ fo.status ? "Active" : "InActive" }}
+            </div>
           </ul>
 
           <div class="card-body text-center">
