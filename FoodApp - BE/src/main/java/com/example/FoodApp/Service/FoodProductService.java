@@ -8,10 +8,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.FoodApp.Dao.FoodOrderDao;
 import com.example.FoodApp.Dao.FoodProductDao;
 import com.example.FoodApp.Dao.MenuDao;
+import com.example.FoodApp.Dao.UserDao;
+import com.example.FoodApp.Models.FoodOrder;
 import com.example.FoodApp.Models.FoodProduct;
 import com.example.FoodApp.Models.Menu;
+import com.example.FoodApp.Models.User;
 import com.example.FoodApp.util.ResponseStructure;
 
 @Service
@@ -19,6 +23,10 @@ public class FoodProductService {
 	
 	@Autowired
 	FoodProductDao foodProductDao;
+	
+	@Autowired
+	UserDao userDao;
+	
 	@Autowired
 	MenuDao menuDao;
 	
@@ -53,6 +61,18 @@ public class FoodProductService {
             structure.setData(foodProductDao.getAllFoodProducts());
         return new ResponseEntity<ResponseStructure<List<FoodProduct>>>(structure, HttpStatus.OK);
     }
+	
+	public ResponseEntity<ResponseStructure<FoodProduct>> updateFoodProduct(FoodProduct foodProduct) {
+		ResponseStructure<FoodProduct> structure = new ResponseStructure<>();
+		FoodProduct foodProductTobeUpdated = foodProductDao.getFoodProductById(foodProduct.getId()).get();
+		User user = foodProductTobeUpdated.getUser();
+		foodProduct.setUser(user);
+		structure.setError(false);
+		structure.setMessage("Food Product Status Updated");
+		structure.setData(foodProductDao.updateFoodProduct(foodProduct));
+
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(structure, HttpStatus.OK);
+	}
 	
 	public ResponseEntity<ResponseStructure<String>> deleteFoodProduct(int id){
 		ResponseStructure<String> structure = new ResponseStructure<>();

@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.FoodApp.Models.FoodOrder;
 import com.example.FoodApp.Models.FoodProduct;
 import com.example.FoodApp.Service.FoodProductService;
 import com.example.FoodApp.util.ResponseStructure;
@@ -36,6 +38,11 @@ public class FoodProductController {
     public ResponseEntity<ResponseStructure<List<FoodProduct>>> getAllFoodProduct() {
         return foodProductService.getAllFoodProduct();
     }
+	
+	@PutMapping("/foodproduct")
+	public ResponseEntity<ResponseStructure<FoodProduct>> updateFoodProduct(@RequestBody FoodProduct foodProduct) {
+		return foodProductService.updateFoodProduct(foodProduct);
+	}
 	
 	@DeleteMapping("/foodproduct/{foodProductId}")
 	public ResponseEntity<ResponseStructure<String>> deleteProduct(@PathVariable int foodProductId){

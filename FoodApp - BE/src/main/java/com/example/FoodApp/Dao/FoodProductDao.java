@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.FoodApp.Models.FoodOrder;
 import com.example.FoodApp.Models.FoodProduct;
 import com.example.FoodApp.Repository.FoodProductRepository;
 
@@ -30,12 +31,18 @@ public class FoodProductDao {
 		return foodProductRepository.findAll();
 	}
 	
-	// 4. Delete Food Product
+	//4. Update Food Product
+	public FoodProduct updateFoodProduct(FoodProduct foodProduct) {
+		foodProductRepository.save(foodProduct);
+		return foodProduct;
+	}
+	
+	// 5. Delete Food Product
 	public void deleteFoodProduct(int id) {
 		foodProductRepository.deleteById(id);
 	}
 
-	 // 5. Get Food Products Present in Menu
+	 // 6. Get Food Products Present in Menu
 	 public List<FoodProduct> getMenuFoodProducts(int menuId){
 	 	return foodProductRepository.getFoodProductsInMenu(menuId);
 	 }
