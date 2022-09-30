@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if(this.res.error){
       console.log("Invalid credentials");
       alert(this.res.message);
-    }else if(this.res.data.role === "BranchManager"){
+    }else if(this.res.data.role === "manager"){
       localStorage.setItem("user", JSON.stringify(this.res.data))
       alert(this.res.message);
       this.route.navigate(["/manager"])
