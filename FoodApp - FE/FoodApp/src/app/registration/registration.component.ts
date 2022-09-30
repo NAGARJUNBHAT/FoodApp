@@ -22,12 +22,15 @@ export class RegistrationComponent implements OnInit {
   }
 
   register(form: NgForm) {
-    form.value.role = this.route.snapshot.params['role'];
+    console.log(form);
+    console.log(form.value);
+    
+    
+    // form.value.role = this.route.snapshot.params['role'];
     this.userService.registerUser(form.value).subscribe(res=>{
       console.log(res);
-      this.router.navigate(["/login"])
-      // this.toast.success(`${this.route.snapshot.params['role']} registered successfully`)
-      alert(`${this.route.snapshot.params['role']} registered successfully`)
+      this.router.navigate(["/login"]);
+      alert("Registration successful");
     })
   }
 
