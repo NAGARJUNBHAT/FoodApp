@@ -13,7 +13,7 @@ export class ManagerServiceService {
   }
 
   editFpData(foodProduct:any, menuId:number){
-    return this.http.post(`http://localhost:8080/foodproduct/${menuId}`,foodProduct);
+    return this.http.put("http://localhost:8080/foodproduct",foodProduct);
   }
 
   deleteFpData(value:number){

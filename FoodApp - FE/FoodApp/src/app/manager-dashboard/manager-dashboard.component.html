@@ -1,82 +1,40 @@
-<div
-  class="jumbotron"
-  style="
-    padding: 10px;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url(../../assets/img/back.jpg);
-    background-size: cover;
-    height: 20vh;
-    background-repeat: no-repeat;
-    color: white;
-    text-align: center;
-  "
->
-  <div class="jumbotron-text" style="margin-bottom: 10px; font-size: large">
-    <div style="margin: 2% auto" class="container">
-      <h2>
-        {{ manager.name }}<br /><br />
-        {{ manager.email }}<br /><br />
-      </h2>
-    </div>
-  </div>
-</div>
 
-<div class="container">
-  <div style="margin: 2% auto; text-align: center" class="container">
-    <button
-      type="button"
-      class="btn btn-info btn-lg"
-      [routerLink]="['/add-fp']"
-      style="width: 250px"
-    >
-      Add New Food product
-    </button>
-  </div>
-  <h2 style="text-align: center; color: darkred">
-    Here are list of all the Food Products in your Branch!
-  </h2>
-  <div style="margin: 4% auto" class="container">
-    <table class="table table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">Product Id</th>
-          <th scope="col">Name of the Product</th>
-          <th scope="col">Type of the Product</th>
-          <th scope="col">Is it Available?</th>
-          <th scope="col">About the Product</th>
-          <th scope="col">Price of the Product</th>
-          <th scope="col">Edit the Product?</th>
-          <th scope="col">Delete the Product?</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let r of result.data.foodProducts">
-          <td>{{ r.id }}</td>
-          <td>{{ r.name }}</td>
-          <td>{{ r.type }}</td>
-          <td>{{ r.avaialbility }}</td>
-          <td>{{ r.about }}</td>
-          <td>{{ r.price }}</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-secondary"
-              [routerLink]="['/edit-fp']"
-            >
-              Edit
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-danger"
-              (click)="deletefp(r.id)"
-            >
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div style="margin: 4% auto;" class="container">
+  <h6>{{manager.name}}<br><br>
+    {{manager.email}}<br><br>
+   </h6>
+</div>
+<div style="margin: 2% auto;" class="container">
+    <button type="button" class="btn btn-primary" [routerLink]="['/add-fp']">Add Food product</button>
+</div>
+<div style="margin: 4% auto;" class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Avaialbility</th>
+            <th scope="col">About </th>
+            <th scope="col">Price</th>
+            <th scope="col">Edit </th>
+            <th scope="col">Delete</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of result.data.foodProducts">
+            
+            <td>{{r.id}}</td>
+            <td>{{r.name}}</td>
+            <td>{{r.type}}</td>
+            <td>{{r.avaialbility}}</td>
+            <td>{{r.about}}</td>
+            <td>{{r.price}}</td>
+            <td><button type="button" class="btn btn-secondary" [routerLink]="['/edit-fp/',r.id]">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deletefp(r.id)">Delete</button></td>
+
+          </tr>
+        </tbody>
+      </table>
 </div>

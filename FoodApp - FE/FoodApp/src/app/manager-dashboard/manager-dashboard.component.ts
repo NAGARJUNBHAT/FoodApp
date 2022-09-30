@@ -23,6 +23,7 @@ export class ManagerDashboardComponent implements OnInit {
       console.log(this.manager);
       localStorage.setItem('my_menu', this.result.data.id);
     });
+
   }
 
   deletefp(id: number) {
@@ -31,8 +32,8 @@ export class ManagerDashboardComponent implements OnInit {
     this.menu.deleteFpData(id).subscribe((response) => {
       console.log(response);
       this.router.navigate(['manager']);
-      this.menu.getMenu(this.value).subscribe((data) => {
-        this.result = data;
+      this.menu.getMenu(this.manager).subscribe((data)=>{
+        this.result=data;
         console.log(this.result);
       });
     });

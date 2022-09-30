@@ -4,23 +4,31 @@
 
 <div style="margin: 4% auto;" class="container">
     <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
-            
+          
+        <div class="mb-3">
+            <label for="product" class="form-label">Id </label>
+            <input type="text" class="form-control" id="id"
+            name="id"
+            #id='ngModel' 
+            [(ngModel)]="selectedProduct.id" 
+            readonly
+            >
+           </div>
         <div class="mb-3">
             <label for="product" class="form-label">Name </label>
-            <input type="text" class="form-control" id="product"
-            value=""
-            name="product"
-            #product='ngModel' 
-            ngModel 
+            <input type="text" class="form-control" id="name"
+            name="name"
+            #name='ngModel' 
+            [(ngModel)]="selectedProduct.name" 
             required>
-            <span *ngIf="product.touched && product.invalid" style="color: red;">Please fill out this field</span>
+            <span *ngIf="name.touched && name.invalid" style="color: red;">Please fill out this field</span>
         </div>
         <div class="mb-3">
             <label for="type" class="form-label">Type </label>
             <input type="text" class="form-control" id="type"
             name="type"
             #type='ngModel' 
-            ngModel 
+            [(ngModel)]="selectedProduct.type"  
             required>
             <span *ngIf="type.touched && type.invalid" style="color: red;">Please fill out this field</span>
         </div>
@@ -29,14 +37,14 @@
             <input type="text" class="form-control" id="about"
             name="about"
             #about='ngModel' 
-            ngModel 
+            [(ngModel)]="selectedProduct.about"  
             required>
             <span *ngIf="about.touched && about.invalid" style="color: red;">Please fill out this field</span>
         </div>
         <div class="mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" checked
-                name="avail" #avail='ngModel' ngModel>
+                name="avail" #avail='ngModel' [(ngModel)]="selectedProduct.available" >
                 <label class="form-check-label" for="flexCheckDefault">Is available?</label>
             </div>
             
@@ -50,7 +58,7 @@
             <input type="number" class="form-control" id="price"
             name="price"
             #price='ngModel' 
-            ngModel 
+            [(ngModel)]="selectedProduct.price"  
             required>
             <span *ngIf="price.touched && price.invalid" style="color: red;">Please fill out this field</span>
         </div>

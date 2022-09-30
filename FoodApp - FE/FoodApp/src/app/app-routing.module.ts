@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'manager', component:ManagerDashboardComponent},
   { path: 'staff', component: StaffComponent },
   { path: 'add-fp',component:AddFpComponent},
-  { path: 'edit-fp',component:EditFpComponent}
+  { path: 'edit-fp/:id',component:EditFpComponent}
 
 ];
 

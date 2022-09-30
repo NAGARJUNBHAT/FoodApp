@@ -65,8 +65,11 @@ public class FoodProductService {
 	public ResponseEntity<ResponseStructure<FoodProduct>> updateFoodProduct(FoodProduct foodProduct) {
 		ResponseStructure<FoodProduct> structure = new ResponseStructure<>();
 		FoodProduct foodProductTobeUpdated = foodProductDao.getFoodProductById(foodProduct.getId()).get();
-		User user = foodProductTobeUpdated.getUser();
-		foodProduct.setUser(user);
+//		User user = foodProductTobeUpdated.getUser();
+		Menu menu= foodProductTobeUpdated.getMenu();
+//		foodProduct.setUser(user);
+		foodProduct.setMenu(menu);
+		
 		structure.setError(false);
 		structure.setMessage("Food Product Status Updated");
 		structure.setData(foodProductDao.updateFoodProduct(foodProduct));
