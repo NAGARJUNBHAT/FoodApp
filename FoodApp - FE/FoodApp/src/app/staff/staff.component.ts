@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { StaffServiceService } from './../Services/staff-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staff.component.css'],
 })
 export class StaffComponent implements OnInit {
-  constructor() {}
+  constructor(private orders: StaffServiceService, private router: Router) {}
 
-  ngOnInit(): void {}
-
-  allOrders = [{}];
+  allOrders: any;
+  value: number = 1;
+  ngOnInit(): void {
+    // Load all the food Orders
+    this.orders.getAllFoodOrder(this.value).subscribe((data) => {
+      this.allOrders = data;
+      console.log('List of all the Orders :', this.allOrders);
+    });
+  }
 }
