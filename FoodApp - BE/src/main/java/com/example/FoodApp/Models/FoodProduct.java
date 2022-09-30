@@ -26,18 +26,8 @@ public class FoodProduct {
 	@JoinColumn
 	Menu menu;
 
-	@JsonBackReference
-	@ManyToOne
-	@JoinColumn
-	User user;
 	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
+	
 
 	public Menu getMenu() {
 		return menu;

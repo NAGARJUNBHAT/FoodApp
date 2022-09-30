@@ -14,14 +14,14 @@ export class ManagerDashboardComponent implements OnInit {
  
   manager = JSON.parse(localStorage.getItem("user")!);
   my_menu :any
-  value:number=3
+  
   constructor(private menu:ManagerServiceService, private router:Router) { }
 
   ngOnInit(): void {
-    this.menu.getMenu(this.value).subscribe((data)=>{
+    this.menu.getMenu(this.manager.id).subscribe((data)=>{
       this.result=data;
       console.log(this.result);
-      console.log(this.manager);
+     
       localStorage.setItem('my_menu',this.result.data.id);
       
       
@@ -34,7 +34,7 @@ export class ManagerDashboardComponent implements OnInit {
     this.menu.deleteFpData(id).subscribe((response)=>{
       console.log(response);
       this.router.navigate(['manager']);
-      this.menu.getMenu(this.value).subscribe((data)=>{
+      this.menu.getMenu(this.manager).subscribe((data)=>{
         this.result=data;
         console.log(this.result);
       })
