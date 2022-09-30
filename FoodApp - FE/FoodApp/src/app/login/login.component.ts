@@ -25,20 +25,16 @@ export class LoginComponent implements OnInit {
     console.log(this.res)
     if(this.res.error){
       console.log("Invalid credentials");
-      // this.toast.error(this.res.message)
       alert(this.res.message);
-    }else if(this.res.data.role === "Manager"){
+    }else if(this.res.data.role === "manager"){
       localStorage.setItem("user", JSON.stringify(this.res.data))
-      // this.toast.success(this.res.message)
       alert(this.res.message);
-      this.route.navigate(["/manager-dashboard"])
-    }else if(this.res.data.role === "Staff"){
+      this.route.navigate(["/manager"])
+    }else if(this.res.data.role === "staff"){
       localStorage.setItem("user", JSON.stringify(this.res.data))
-      // this.toast.success(this.res.message)
       alert(this.res.message);
       this.route.navigate(["/staff"])
     }else if(this.res.data.role === "User"){
-      // this.toast.success(this.res.message)
       alert(this.res.message);
       this.route.navigate(["/user-dashboard"])
     }

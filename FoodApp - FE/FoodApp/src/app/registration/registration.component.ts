@@ -12,6 +12,9 @@ import { UserService } from '../Services/user.service';
 export class RegistrationComponent implements OnInit {
 
   createUser : any;
+  user = "User";
+  manager = "Manager";
+  staff = "Staff";
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
 
