@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
 
   createUser : any;
   user = "user";
-  manager = "manager";
+  manager = "BranchManager";
   staff = "staff";
 
   constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
