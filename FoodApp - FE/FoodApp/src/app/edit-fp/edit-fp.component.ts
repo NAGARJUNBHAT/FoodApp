@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { ManagerServiceService } from '../Services/manager-service.service';
 
 @Component({
-  selector: 'app-add-fp',
-  templateUrl: './add-fp.component.html',
-  styleUrls: ['./add-fp.component.css']
+  selector: 'app-edit-fp',
+  templateUrl: './edit-fp.component.html',
+  styleUrls: ['./edit-fp.component.css']
 })
-export class AddFpComponent implements OnInit {
+export class EditFpComponent implements OnInit {
 
   res:any
   manager = JSON.parse(localStorage.getItem("user")!);
@@ -18,21 +18,21 @@ export class AddFpComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   OnSubmit(form:NgForm){
     console.log(form.value);
     console.log("Manager id: "+this.manager.id);
     console.log("Menu id: "+this.menu_id);
 
-    this.service.addfpData(form.value, this.menu_id).subscribe(r=>{
-      this.res=r;
-      console.log(this.res.message);
-      if(!this.res.error){
-        alert("Food product added to menu!");
-        this.route.navigate(["/manager"])
-      }
-     
-    })
+      // this.service.editFpData(form.value, this.menu_id).subscribe(r=>{
+      //   this.res=r;
+      //   console.log(this.res.message);
+        
+      //     alert(this.res.message);
+      //     this.route.navigate(["/manager"])
+        
+      
+      // })
     
   }
-
 }

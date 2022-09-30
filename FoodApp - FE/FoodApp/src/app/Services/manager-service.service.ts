@@ -12,16 +12,16 @@ export class ManagerServiceService {
     return this.http.get(`http://localhost:8080/menu/manager/${value}`);
   }
 
-  editFpData(value:number){
-    
+  editFpData(foodProduct:any, menuId:number){
+    return this.http.post(`http://localhost:8080/foodproduct/${menuId}`,foodProduct);
   }
 
   deleteFpData(value:number){
     return this.http.delete(`http://localhost:8080/foodproduct/${value}`);
   }
 
-  addfpData(value:number){
-
+  addfpData(foodProduct:any, menuId:number){
+    return this.http.post(`http://localhost:8080/foodproduct/${menuId}`,foodProduct);
   }
-  
+
 }

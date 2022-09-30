@@ -11,7 +11,9 @@ export class ManagerDashboardComponent implements OnInit {
 
   flag:boolean=false
   result:any
-  
+ 
+  manager = JSON.parse(localStorage.getItem("user")!);
+  my_menu :any
   value:number=3
   constructor(private menu:ManagerServiceService, private router:Router) { }
 
@@ -19,6 +21,9 @@ export class ManagerDashboardComponent implements OnInit {
     this.menu.getMenu(this.value).subscribe((data)=>{
       this.result=data;
       console.log(this.result);
+      console.log(this.manager);
+      localStorage.setItem('my_menu',this.result.data.id);
+      
       
     })
   }
@@ -37,8 +42,6 @@ export class ManagerDashboardComponent implements OnInit {
     })
 
   }
-  editfp(id:number){
-    console.log("edit byn clicked"+ id);
-  }
+
 
 }
