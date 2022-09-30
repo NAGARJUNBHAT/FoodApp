@@ -9,21 +9,21 @@ export class AuthorizationService {
 
   user = JSON.parse(localStorage.getItem("user")!);
   isLoggedInManager(){
-    if(this.user!=null && this.user.role === "Manager"){
+    if(this.user!=null && this.user.role === "BranchManager"){
       return true;
     }else {
       return false
     }
   }
   isLoggedInStaff(){
-    if(this.user!=null && this.user.role === "Staff"){
+    if(this.user!=null && this.user.role === "staff"){
       return true;
     }else {
       return false
     }
   }
   isLoggedInUser(){
-    if(this.user!=null && this.user.role === "User"){
+    if(this.user!=null && this.user.role === "user"){
       return true;
     }else {
       return false
