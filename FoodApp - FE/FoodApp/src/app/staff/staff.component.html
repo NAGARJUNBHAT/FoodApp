@@ -45,7 +45,13 @@
           </ul>
 
           <div class="card-body text-center">
-            <button class="btn btn-info">View Order Details</button>
+            <button
+              class="btn btn-danger"
+              style="width: 200px"
+              (click)="deleteFoodOrder(fo.id)"
+            >
+              Delete the Order
+            </button>
           </div>
         </div>
       </div>
