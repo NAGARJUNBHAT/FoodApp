@@ -75,15 +75,17 @@
 
         <div class="form-group mb-3">
           <label for="Role">Please Select Your Role</label>
-          <select class="form-control" id="inputSelect" #role="ngModel" ngModel>
+          <select class="form-control" id="inputSelect" name="role" #role="ngModel" ngModel required>
             <option>Choose Role</option>
-            <option>User</option>
-            <option>Manager</option>
-            <option>Staff</option>
+            <option value="user">User</option>
+            <option value="manager">Manager</option>
+            <option value="staff">Staff</option>
           </select>
         </div>
 
         <button type="submit" class="btn btn-primary" [disabled]="!regForm.valid">Register Yourself</button>
+        <br> <br>
+        <a href="/">Back to HomePage</a>
       </form>
     </div>
   </div>

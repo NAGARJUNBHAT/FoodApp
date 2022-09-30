@@ -11,7 +11,6 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-
   { path: 'manager', component:ManagerDashboardComponent},
   { path: 'staff', component: StaffComponent },
   { path: 'add-fp',component:AddFpComponent}
