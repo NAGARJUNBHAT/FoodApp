@@ -23,7 +23,7 @@ export class AuthorizationService {
     }
   }
   isLoggedInUser(){
-    if(this.user!=null && this.user.role === "user"){
+    if(this.user!=null && this.user.role === "User"){
       return true;
     }else {
       return false
