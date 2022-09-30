@@ -6,10 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import {HttpClientModule} from '@angular/common/http'
-
 import { StaffComponent } from './staff/staff.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
@@ -22,6 +20,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     ManagerDashboardComponent,
     StaffComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,

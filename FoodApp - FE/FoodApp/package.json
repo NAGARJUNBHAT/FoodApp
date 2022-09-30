@@ -18,11 +18,13 @@
     "@angular/platform-browser": "^14.2.4",
     "@angular/platform-browser-dynamic": "^14.2.4",
     "@angular/router": "^14.2.4",
+    "ngx-toastr": "^15.1.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.4",
     "@angular/cli": "^14.2.4",
     "@angular/compiler-cli": "^14.2.4",
     "@types/jasmine": "~3.10.0",
