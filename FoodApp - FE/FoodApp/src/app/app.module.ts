@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import {HttpClientModule} from '@angular/common/http'
 import { StaffComponent } from './staff/staff.component';
+import { AddFpComponent } from './add-fp/add-fp.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
@@ -18,14 +19,16 @@ import { HomepageComponent } from './homepage/homepage.component';
     RegistrationComponent,
     HomepageComponent,
     ManagerDashboardComponent,
-    StaffComponent
+    StaffComponent,
+    AddFpComponent
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,5 +12,16 @@ export class ManagerServiceService {
     return this.http.get(`http://localhost:8080/menu/manager/${value}`);
   }
 
+  editFpData(value:number){
+    
+  }
+
+  deleteFpData(value:number){
+    return this.http.delete(`http://localhost:8080/foodproduct/${value}`);
+  }
+
+  addfpData(value:number){
+
+  }
   
 }
