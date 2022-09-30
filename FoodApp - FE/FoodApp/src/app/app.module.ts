@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,9 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
 import {HttpClientModule} from '@angular/common/http'
 
 import { StaffComponent } from './staff/staff.component';
+import { AddFpComponent } from './add-fp/add-fp.component';
+
+
 
 @NgModule({
   declarations: [
@@ -19,13 +22,15 @@ import { StaffComponent } from './staff/staff.component';
     RegistrationComponent,
 
     ManagerDashboardComponent,
-    StaffComponent
+    StaffComponent,
+    AddFpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

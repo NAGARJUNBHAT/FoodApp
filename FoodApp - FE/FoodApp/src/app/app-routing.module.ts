@@ -5,6 +5,7 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AddFpComponent } from './add-fp/add-fp.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
 
   { path: 'manager', component:ManagerDashboardComponent},
   { path: 'staff', component: StaffComponent },
+  { path: 'add-fp',component:AddFpComponent}
 
 ];
 

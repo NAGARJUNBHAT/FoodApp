@@ -1,4 +1,7 @@
-<div class="container">
+<div style="margin: 4% auto;" class="container">
+    <button type="button" class="btn btn-primary" [routerLink]="['/add-fp']">Add Food product</button>
+</div>
+<div style="margin: 4% auto;" class="container">
     <table class="table">
         <thead>
           <tr>
@@ -8,6 +11,9 @@
             <th scope="col">Avaialbility</th>
             <th scope="col">About </th>
             <th scope="col">Price</th>
+            <th scope="col">Edit </th>
+            <th scope="col">Delete</th>
+
           </tr>
         </thead>
         <tbody>
@@ -19,6 +25,9 @@
             <td>{{r.avaialbility}}</td>
             <td>{{r.about}}</td>
             <td>{{r.price}}</td>
+            <td><button type="button" class="btn btn-secondary" (click)="editfp(r.id)">Edit</button></td>
+            <td><button type="button" class="btn btn-danger" (click)="deletefp(r.id)">Delete</button></td>
+
           </tr>
         </tbody>
       </table>
