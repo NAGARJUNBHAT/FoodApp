@@ -11,7 +11,7 @@ export class StaffComponent implements OnInit {
   constructor(private orders: StaffServiceService, private router: Router) {}
 
   allOrders: any;
-  value: number = 2;
+  value: number = 3;
   ngOnInit(): void {
     // Load all the food Orders
     this.orders.getAllFoodOrder(this.value).subscribe((data) => {
