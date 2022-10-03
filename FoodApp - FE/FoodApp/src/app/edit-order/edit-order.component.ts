@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { StaffServiceService } from '../Services/staff-service.service';
+import { Router } from '@angular/router';
+import { FoodorderService } from '../Services/foodorder.service';
+import { FoodproductService } from '../Services/foodproduct.service';
 
 @Component({
   selector: 'app-edit-order',
@@ -11,53 +12,77 @@ import { StaffServiceService } from '../Services/staff-service.service';
 export class EditOrderComponent implements OnInit {
 
   res : any;
-  result : any;
-  selectedOrder : any;
+  orderItems : any;
+  totalOrderPrice: number = 0;
+  itemCountMap = new Map<number, number>();
   staff = JSON.parse(localStorage.getItem("user")!);
-  orderId = JSON.parse(localStorage.getItem("")!);
 
-  constructor(private service : StaffServiceService, private route : ActivatedRoute, private router : Router) { }
+  constructor(private fPService : FoodproductService, private fOService : FoodorderService, private router : Router) { }
+
+  allFoodProducts: any;
 
   ngOnInit(): void {
 
-    let id = this.route.snapshot.params['id'];
-    console.log(id);
-
-    this.service.getOrderById(this.staff.id).subscribe((data) => {
-      this.result = data;
-      console.log(this.result.data.foodOrder);
-
-      for(let r of this.result.data.foodOrder) {
-        console.log(r);
-
-        if(r.id==id) {
-          console.log(id,r.id);
-          this.selectedOrder=r;
-          console.log(this.selectedOrder);
-          break;
-        }
-        
-      } 
-      
-    })
+    this.fPService.getAllFoodProducts().subscribe((data) => {
+      // console.log(data);
+      this.allFoodProducts = data;
+      this.allFoodProducts = this.allFoodProducts.data;
+    });
     
   }
 
-  OnSubmit(form:NgForm){
-    console.log(form.value);
-    console.log("Staff id: "+this.staff.id);
-    console.log("Order id: "+this.orderId);
+  addNewItem(itemId: any, itemPrice: any) {
+    // console.log(itemId, itemPrice);
+    // If item has been added previously (just the quantity is changed)
+    if (this.itemCountMap.has(itemId)) {
+      // Increase count and totalPrice
+      this.itemCountMap.set(itemId, this.itemCountMap.get(itemId)! + 1);
+      this.totalOrderPrice += itemPrice;
+    }
+    // If chosen for the first time
+    else {
+      // Set count and increase orderPrice
+      this.itemCountMap.set(itemId, 1);
+      this.totalOrderPrice += itemPrice;
+    }
+    // console.log(this.totalOrderPrice);
+  }
 
-      this.service.editOrderData(form.value).subscribe(r=>{
-        this.res=r;
+  removeItem(itemId: any, itemPrice: any) {
+    // console.log(itemId, itemPrice);
+    if (this.itemCountMap.has(itemId)) {
+      if (this.itemCountMap.get(itemId) === 0) {
+      } else {
+        this.itemCountMap.set(itemId, this.itemCountMap.get(itemId)! - 1);
+        this.totalOrderPrice -= itemPrice;
+      }
+    }
+    // console.log(this.totalOrderPrice);
+  }
+
+  reply: any;
+
+  updateOrder(form: NgForm) {
+    let updateOrder = {
+      status: true,
+      customerName: form.value.customerName,
+      customerContact: form.value.contactNumber,
+      totalPrice: this.totalOrderPrice,
+      orderCreatedTime: new Date().toString(),
+    };
+    console.log('Staff id: ' + this.staff.id);
+    console.log('Food Order Update : ', updateOrder);
+    this.reply = confirm('Do you want to update the order? ');
+    if (this.reply == true) {
+      this.fOService.updateStatus(updateOrder).subscribe((r) => {
+        this.res = r;
         console.log(this.res.message);
-        
-          alert(this.res.message);
-          this.router.navigate(["/staff"]);
-        
-      
-      })
-    
+        if (!this.res.error) {
+          alert('Food Order Updated successfully!');
+          this.router.navigate(['/staff']);
+        }
+      });
+    }
   }
 
 }
