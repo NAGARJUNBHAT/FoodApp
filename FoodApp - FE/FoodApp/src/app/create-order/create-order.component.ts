@@ -66,7 +66,7 @@ export class CreateOrderComponent implements OnInit {
     let newOrder = {
       status: true,
       customerName: form.value.customerName,
-      customerContact: form.value.contactNumber,
+      contactNumber: form.value.contactNumber,
       totalPrice: this.totalOrderPrice,
       orderCreatedTime: newDate,
     };
