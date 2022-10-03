@@ -12,7 +12,7 @@ export class ManagerServiceService {
     return this.http.get(`http://localhost:8080/menu/manager/${value}`);
   }
 
-  editFpData(foodProduct:any, menuId:number){
+  editFpData(foodProduct:any){
     return this.http.put("http://localhost:8080/foodproduct",foodProduct);
   }
 

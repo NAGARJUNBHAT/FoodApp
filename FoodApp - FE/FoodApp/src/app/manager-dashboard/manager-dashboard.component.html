@@ -5,17 +5,19 @@
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
       url(../../assets/img/back.jpg);
     background-size: cover;
-    height: 20vh;
+    height: 50vh;
     background-repeat: no-repeat;
     color: white;
     text-align: center;
   "
 >
-  <div class="jumbotron-text" style="margin-top: 50px; font-size: x-large">
+  <div class="jumbotron-text" style="margin-top: 20px; font-size: x-large">
     <h2>
-      {{ manager.name }}<br /><br />
-      {{ manager.email }}<br /><br />
+      {{ manager.name }}<br />
+      {{ manager.email }}<br />
     </h2>
+    <button type="button" class="btn btn-dark" (click)="logout()">Logout</button>
+    <br /><br />
   </div>
 
   <div style="margin: 2% auto" class="container">
@@ -34,7 +36,7 @@
           <th scope="col">Id</th>
           <th scope="col">Name</th>
           <th scope="col">Type</th>
-          <th scope="col">Avaialbility</th>
+          <th scope="col">Availability</th>
           <th scope="col">About</th>
           <th scope="col">Price</th>
           <th scope="col">Edit Product</th>
@@ -46,7 +48,8 @@
           <td>{{ r.id }}</td>
           <td>{{ r.name }}</td>
           <td>{{ r.type }}</td>
-          <td>{{ r.avaialbility }}</td>
+          <td>{{ r.avaialbility===0 ? 'yes' : 'no' }}</td>
+          <!-- <td>yes</td> -->
           <td>{{ r.about }}</td>
           <td>{{ r.price }}</td>
           <td>

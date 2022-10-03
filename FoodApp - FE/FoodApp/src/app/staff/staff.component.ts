@@ -12,6 +12,9 @@ export class StaffComponent implements OnInit {
 
   allOrders: any;
   value: number = 3;
+
+  
+
   ngOnInit(): void {
     // Load all the food Orders
     this.orders.getAllFoodOrder(this.value).subscribe((data) => {
