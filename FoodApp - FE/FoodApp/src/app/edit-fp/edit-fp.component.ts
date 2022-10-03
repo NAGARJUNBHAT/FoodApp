@@ -14,7 +14,6 @@ export class EditFpComponent implements OnInit {
   res:any
   selectedProduct:any
   manager = JSON.parse(localStorage.getItem("user")!);
-  menu_id = JSON.parse(localStorage.getItem("my_menu")!);
 
   constructor(private service:ManagerServiceService, private route:ActivatedRoute, private router:Router) { }
 
@@ -27,12 +26,9 @@ export class EditFpComponent implements OnInit {
       console.log(this.result.data.foodProducts);
       
       for(let r of this.result.data.foodProducts){
-        console.log(r);
-        
         if(r.id==id) {
           console.log(id,r.id);
           this.selectedProduct=r;
-          console.log(this.selectedProduct);
           break;
         }
       }
@@ -43,9 +39,8 @@ export class EditFpComponent implements OnInit {
   OnSubmit(form:NgForm){
     console.log(form.value);
     console.log("Manager id: "+this.manager.id);
-    console.log("Menu id: "+this.menu_id);
 
-      this.service.editFpData(form.value, this.menu_id).subscribe(r=>{
+      this.service.editFpData(form.value).subscribe(r=>{
         this.res=r;
         console.log(this.res.message);
         

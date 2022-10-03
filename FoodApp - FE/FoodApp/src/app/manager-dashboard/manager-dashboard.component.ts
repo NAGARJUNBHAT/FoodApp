@@ -13,11 +13,11 @@ export class ManagerDashboardComponent implements OnInit {
 
   manager = JSON.parse(localStorage.getItem('user')!);
   my_menu: any;
-  value: number = 1;
+  // value: number = 1;
   constructor(private menu: ManagerServiceService, private router: Router) {}
 
   ngOnInit(): void {
-    this.menu.getMenu(this.value).subscribe((data) => {
+    this.menu.getMenu(this.manager.id).subscribe((data) => {
       this.result = data;
       console.log(this.result);
       console.log(this.manager);
@@ -40,5 +40,11 @@ export class ManagerDashboardComponent implements OnInit {
       });
       location.reload();
     }
+  }
+
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(["/login"]);
   }
 }

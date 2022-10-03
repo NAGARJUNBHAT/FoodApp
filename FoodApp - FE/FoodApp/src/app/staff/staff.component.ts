@@ -12,6 +12,7 @@ export class StaffComponent implements OnInit {
 
   allOrders: any;
   staff = JSON.parse(localStorage.getItem('user')!);
+
   ngOnInit(): void {
     // Load all the food Orders
     this.orders.getAllFoodOrder(this.staff.id).subscribe((data) => {
