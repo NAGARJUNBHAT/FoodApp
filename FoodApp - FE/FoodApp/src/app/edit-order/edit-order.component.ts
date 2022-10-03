@@ -89,7 +89,7 @@ export class EditOrderComponent implements OnInit {
       id:this.id,
       status: true,
       customerName: form.value.customerName,
-      customerContact: form.value.contactNumber,
+      contactNumber: form.value.contactNumber,
       totalPrice: this.totalOrderPrice,
       orderCreatedTime: newDate
     };
