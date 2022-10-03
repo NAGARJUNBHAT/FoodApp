@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { FoodorderService } from '../Services/foodorder.service';
-import { FoodproductService } from '../Services/foodproduct.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ManagerServiceService } from '../Services/manager-service.service';
+import { StaffServiceService} from './../Services/staff-service.service'
 
 @Component({
   selector: 'app-edit-order',
@@ -11,23 +11,44 @@ import { FoodproductService } from '../Services/foodproduct.service';
 })
 export class EditOrderComponent implements OnInit {
 
+  id:number = 0;
+  selectedProduct:any;
   res : any;
   orderItems : any;
   totalOrderPrice: number = 0;
   itemCountMap = new Map<number, number>();
   staff = JSON.parse(localStorage.getItem("user")!);
+  allFoodProducts : any;
 
-  constructor(private fPService : FoodproductService, private fOService : FoodorderService, private router : Router) { }
+  constructor( private orders : StaffServiceService, private foodProduct:ManagerServiceService, private router : Router, private route:ActivatedRoute ) { }
 
-  allFoodProducts: any;
+  allFoodOrders: any;
 
   ngOnInit(): void {
 
-    this.fPService.getAllFoodProducts().subscribe((data) => {
-      // console.log(data);
-      this.allFoodProducts = data;
-      this.allFoodProducts = this.allFoodProducts.data;
+    this.id = this.route.snapshot.params['id'];
+    console.log(this.id);
+
+    this.orders.getAllFoodOrder(this.staff.id).subscribe((data) => {
+      this.allFoodOrders = data;
+      console.log('List of all the Orders :', this.allFoodOrders);
+
+      for(let r of this.allFoodOrders.data){
+        console.log(r);
+        
+        if(r.id==this.id){
+          this.selectedProduct=r;          
+          break;
+        }
+      }
     });
+   
+     this.foodProduct.getAllFoodProducts().subscribe((data)=>{
+       this.allFoodProducts=data;
+       console.log(this.allFoodProducts.data);
+       
+     })
+
     
   }
 
@@ -65,6 +86,7 @@ export class EditOrderComponent implements OnInit {
   updateOrder(form: NgForm) {
     const newDate = new Date();
     let updateOrder = {
+      id:this.id,
       status: true,
       customerName: form.value.customerName,
       customerContact: form.value.contactNumber,
@@ -75,7 +97,7 @@ export class EditOrderComponent implements OnInit {
     console.log('Food Order Update : ', updateOrder);
     this.reply = confirm('Do you want to update the order? ');
     if (this.reply == true) {
-      this.fOService.updateStatus(updateOrder).subscribe((r) => {
+      this.orders.updateStatus(updateOrder).subscribe((r) => {
         this.res = r;
         console.log(this.res.message);
         if (!this.res.error) {

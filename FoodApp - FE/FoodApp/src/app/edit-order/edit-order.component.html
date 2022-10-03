@@ -16,7 +16,7 @@
         type="name"
         id="inputEmail"
         class="form-control"
-        placeholder="Full Name"
+        [(ngModel)]="selectedProduct.customerName"
         required
       />
   
@@ -34,7 +34,7 @@
         type="text"
         id="inputPassword"
         class="form-control"
-        placeholder="Contact Number"
+        [(ngModel)]="selectedProduct.contactNumber"
         required
       />
       <span
@@ -63,7 +63,7 @@
       <br />
   
       <p style="margin: 1px 0">Choose From Menu:</p>
-      <div class="list-group foodproduct" *ngFor="let f of allFoodProducts">
+      <div class="list-group foodproduct" *ngFor="let f of allFoodProducts.data">
         <a
           class="list-group-item list-group-item-action"
           style="margin: 1px auto"

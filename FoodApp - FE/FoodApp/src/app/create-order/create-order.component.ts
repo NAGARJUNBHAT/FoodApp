@@ -1,8 +1,8 @@
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { FoodorderService } from './../Services/foodorder.service';
-import { FoodproductService } from './../Services/foodproduct.service';
 import { Component, OnInit } from '@angular/core';
+import { StaffServiceService } from '../Services/staff-service.service';
+import { ManagerServiceService } from '../Services/manager-service.service';
 
 @Component({
   selector: 'app-create-order',
@@ -17,8 +17,8 @@ export class CreateOrderComponent implements OnInit {
   totalOrderPrice: number = 0;
 
   constructor(
-    private fPservice: FoodproductService,
-    private fOService: FoodorderService,
+    private fPservice: ManagerServiceService,
+    private fOService: StaffServiceService,
     private route: Router
   ) {}
 
