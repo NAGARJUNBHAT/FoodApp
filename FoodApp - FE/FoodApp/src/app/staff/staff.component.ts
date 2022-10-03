@@ -34,8 +34,8 @@ export class StaffComponent implements OnInit {
     });
   }
 
-  logout(){
+  logout() {
     localStorage.clear();
-    this.router.navigate(["/login"]);
+    this.router.navigate(['/login']);
   }
 }
