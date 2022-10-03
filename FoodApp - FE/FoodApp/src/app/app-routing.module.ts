@@ -1,3 +1,4 @@
+import { CreateOrderComponent } from './create-order/create-order.component';
 import { StaffComponent } from './staff/staff.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -12,11 +13,11 @@ const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'manager', component:ManagerDashboardComponent},
+  { path: 'manager', component: ManagerDashboardComponent },
   { path: 'staff', component: StaffComponent },
-  { path: 'add-fp',component:AddFpComponent},
-  { path: 'edit-fp/:id',component:EditFpComponent}
-
+  { path: 'add-fp', component: AddFpComponent },
+  { path: 'edit-fp/:id', component: EditFpComponent },
+  { path: 'createOrder', component: CreateOrderComponent },
 ];
 
 @NgModule({

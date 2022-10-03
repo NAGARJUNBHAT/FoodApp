@@ -1,0 +1,94 @@
+<div style="margin: 2% auto; text-align: center" class="container">
+  <h1>Create a new Order!</h1>
+  <img
+    src="../../assets/img/food2.png"
+    alt="Logo can't be loaded"
+    height="300px"
+  />
+</div>
+<div style="margin: 2% auto" class="container">
+  <form action="">
+    <label for="inputEmail" class="sr-only">Enter your name</label>
+    <input
+      name="customerName"
+      #customerName="ngModel"
+      ngModel
+      type="name"
+      id="inputEmail"
+      class="form-control"
+      placeholder="Full Name"
+      required
+    />
+
+    <span
+      *ngIf="customerName.invalid && customerName.touched"
+      style="color: red"
+      >Name required</span
+    >
+    <br />
+    <label for="inputPassword" class="sr-only">Enter Your Contact Number</label>
+    <input
+      name="contactNumber"
+      #contactNumber="ngModel"
+      ngModel
+      type="text"
+      id="inputPassword"
+      class="form-control"
+      placeholder="Contact Number"
+      required
+    />
+    <span
+      *ngIf="contactNumber.invalid && contactNumber.touched"
+      style="color: red"
+      >Contact required</span
+    >
+    <br />
+    <label for="inputPassword1" class="sr-only"
+      >Enter your E-Mail Address</label
+    >
+    <input
+      name="mail"
+      #mail="ngModel"
+      ngModel
+      type="text"
+      id="inputPassword1"
+      class="form-control"
+      placeholder="Email ID"
+      pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+      required
+    />
+    <span *ngIf="mail.invalid && mail.touched" style="color: red"
+      >Invalid mail</span
+    >
+    <br />
+
+    <p style="margin: 1px 0">Choose From Menu:</p>
+    <div class="list-group foodproduct" *ngFor="let f of allFoodProducts">
+      <a
+        class="list-group-item list-group-item-action"
+        style="margin: 1px auto"
+      >
+        <div class="d-flex w-100 justify-content-between">
+          <p class="mb-1">{{ f.name }}</p>
+          <p class="mb-1">{{ f.type }}</p>
+          <small> &#8377; {{ f.price }}</small>
+          <div>
+            <button type="button" class="quantity-inp">+</button>
+            <button type="button">1</button>
+            <button type="button" class="quantity-inp">-</button>
+          </div>
+        </div>
+      </a>
+    </div>
+    <p style="margin-top: 10px">Total price: <span>TotalPrice</span></p>
+
+    <br />
+    <button
+      class="btn btn-lg btn-success btn-block"
+      type="submit"
+      style="width: 100%"
+    >
+      Make the Order!
+    </button>
+  </form>
+</div>

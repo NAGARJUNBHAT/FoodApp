@@ -12,6 +12,7 @@ import { StaffComponent } from './staff/staff.component';
 import { AddFpComponent } from './add-fp/add-fp.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { EditFpComponent } from './edit-fp/edit-fp.component';
+import { CreateOrderComponent } from './create-order/create-order.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EditFpComponent } from './edit-fp/edit-fp.component';
     ManagerDashboardComponent,
     StaffComponent,
     AddFpComponent,
-    EditFpComponent
+    EditFpComponent,
+    CreateOrderComponent
   ],
 
   imports: [
