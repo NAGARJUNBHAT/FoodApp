@@ -23,19 +23,22 @@ export class ManagerDashboardComponent implements OnInit {
       console.log(this.manager);
       localStorage.setItem('my_menu', this.result.data.id);
     });
-
   }
-
+  reply: any;
   deletefp(id: number) {
     console.log('delete btn clicked. Id:' + id);
-
-    this.menu.deleteFpData(id).subscribe((response) => {
-      console.log(response);
-      this.router.navigate(['manager']);
-      this.menu.getMenu(this.manager).subscribe((data)=>{
-        this.result=data;
-        console.log(this.result);
+    this.reply = window.confirm('Are you sure you want to delete the product?');
+    console.log(this.reply);
+    if (this.reply == true) {
+      this.menu.deleteFpData(id).subscribe((response) => {
+        console.log(response);
+        this.router.navigate(['manager']);
+        this.menu.getMenu(this.manager).subscribe((data) => {
+          this.result = data;
+          console.log(this.result);
+        });
       });
-    });
+      location.reload();
+    }
   }
 }
