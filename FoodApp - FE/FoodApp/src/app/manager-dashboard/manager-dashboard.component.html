@@ -5,7 +5,7 @@
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
       url(../../assets/img/back.jpg);
     background-size: cover;
-    height: 50vh;
+    height: 20vh;
     background-repeat: no-repeat;
     color: white;
     text-align: center;
@@ -16,7 +16,14 @@
       {{ manager.name }}<br />
       {{ manager.email }}<br />
     </h2>
-    <button type="button" class="btn btn-dark" (click)="logout()">Logout</button>
+    <br /><br />
+    <button
+      type="button"
+      class="btn btn-dark btn-lg btn-block"
+      (click)="logout()"
+    >
+      Logout
+    </button>
     <br /><br />
   </div>
 
@@ -48,7 +55,7 @@
           <td>{{ r.id }}</td>
           <td>{{ r.name }}</td>
           <td>{{ r.type }}</td>
-          <td>{{ r.avaialbility===0 ? 'yes' : 'no' }}</td>
+          <td>{{ r.avaialbility === 0 ? "yes" : "no" }}</td>
           <!-- <td>yes</td> -->
           <td>{{ r.about }}</td>
           <td>{{ r.price }}</td>
