@@ -8,6 +8,7 @@ import { ManagerDashboardComponent } from './manager-dashboard/manager-dashboard
 import { HomepageComponent } from './homepage/homepage.component';
 import { AddFpComponent } from './add-fp/add-fp.component';
 import { EditFpComponent } from './edit-fp/edit-fp.component';
+import { EditOrderComponent } from './edit-order/edit-order.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'staff', component: StaffComponent },
   { path: 'add-fp', component: AddFpComponent },
   { path: 'edit-fp/:id', component: EditFpComponent },
-  { path: 'createOrder', component: CreateOrderComponent },
+  { path: 'create-order', component: CreateOrderComponent },
+  { path: 'edit-order/:id', component: EditOrderComponent }
 ];
 
 @NgModule({

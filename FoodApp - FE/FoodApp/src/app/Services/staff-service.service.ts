@@ -18,4 +18,8 @@ export class StaffServiceService {
   getOrderById(value: number) {
     return this.http.get(`http://localhost:8080/foodorderbyid/${value}`);
   }
+
+  editOrderData(foodOrder : any) {
+    return this.http.put('http://localhost:8080/foodorder', foodOrder);
+  }
 }

@@ -1,0 +1,84 @@
+<div style="margin: 1% auto; text-align: center" class="container">
+    <h1>Update the Food Order!</h1>
+    <img
+      src="../../assets/img/food1.png"
+      alt="Logo can't be loaded"
+      height="300px"
+    />
+  </div>
+
+  <div class="container">
+
+    <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
+
+        <div class="mb-3">
+            <label for="product" class="form-label">Id </label>
+            <input
+              type="text"
+              class="form-control"
+              id="id"
+              name="id"
+              #id="ngModel"
+              [(ngModel)]="selectedOrder.id"
+              readonly
+            />
+          </div>
+          <div class="mb-3">
+            <label for="product" class="form-label">Name </label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              #name="ngModel"
+              [(ngModel)]="selectedOrder.name"
+              required
+            />
+            <span *ngIf="name.touched && name.invalid" style="color: red"
+              >Please fill out this field</span
+            >
+          </div>
+          <div class="mb-3">
+            <label for="type" class="form-label">Type </label>
+            <input
+              type="text"
+              class="form-control"
+              id="type"
+              name="type"
+              #type="ngModel"
+              [(ngModel)]="selectedOrder.type"
+              required
+            />
+            <span *ngIf="type.touched && type.invalid" style="color: red"
+              >Please fill out this field</span
+            >
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Price </label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              #price="ngModel"
+              [(ngModel)]="selectedOrder.price"
+              required
+            />
+            <span *ngIf="price.touched && price.invalid" style="color: red"
+              >Please fill out this field</span
+            >
+          </div>
+      
+          <button
+            [disabled]="!editForm.valid"
+            type="submit"
+            class="btn btn-warning btn-lg"
+            style="width: 300px"
+          >
+            Update the Food Order
+          </button>
+
+    </form>
+
+  </div>
