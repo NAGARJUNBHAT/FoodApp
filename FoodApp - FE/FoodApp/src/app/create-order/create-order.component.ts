@@ -27,8 +27,15 @@ export class CreateOrderComponent implements OnInit {
     this.fPservice.getAllFoodProducts().subscribe((data) => {
       // console.log(data);
       this.allFoodProducts = data;
-      this.allFoodProducts = this.allFoodProducts.data;
-      console.log('First Food Product : ', this.allFoodProducts[0]);
+      let cnt = Object.keys(this.allFoodProducts.data).length;
+      console.log('Number of Food Products : ', cnt);
+      if (cnt == 0) {
+        window.alert('No Food Products Available! \nPlease Contact Manager');
+        this.route.navigate(['/staff']);
+      } else {
+        this.allFoodProducts = this.allFoodProducts.data;
+        console.log('First Food Product : ', this.allFoodProducts[0]);
+      }
     });
   }
 
