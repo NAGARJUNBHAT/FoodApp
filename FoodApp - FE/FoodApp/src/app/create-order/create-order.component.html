@@ -7,7 +7,7 @@
   />
 </div>
 <div style="margin: 2% auto" class="container">
-  <form action="">
+  <form #newOrder="ngForm" (ngSubmit)="addNewOrder(newOrder)">
     <label for="inputEmail" class="sr-only">Enter your name</label>
     <input
       name="customerName"
@@ -42,7 +42,7 @@
       style="color: red"
       >Contact required</span
     >
-    <br />
+    <!-- <br />
     <label for="inputPassword1" class="sr-only"
       >Enter your E-Mail Address</label
     >
@@ -59,7 +59,7 @@
     />
     <span *ngIf="mail.invalid && mail.touched" style="color: red"
       >Invalid mail</span
-    >
+    > -->
     <br />
 
     <p style="margin: 1px 0">Choose From Menu:</p>
@@ -73,14 +73,28 @@
           <p class="mb-1">{{ f.type }}</p>
           <small> &#8377; {{ f.price }}</small>
           <div>
-            <button type="button" class="quantity-inp">+</button>
+            <button
+              type="button"
+              class="quantity-inp"
+              (click)="addNewItem(f.id, f.price)"
+            >
+              +
+            </button>
             <button type="button">1</button>
-            <button type="button" class="quantity-inp">-</button>
+            <button
+              type="button"
+              class="quantity-inp"
+              (click)="removeItem(f.id, f.price)"
+            >
+              -
+            </button>
           </div>
         </div>
       </a>
     </div>
-    <p style="margin-top: 10px">Total price: <span>TotalPrice</span></p>
+    <h2 style="margin-top: 10px; margin-left: 1050px">
+      Total price: <span id="totalPriceValue">{{ totalOrderPrice }}</span>
+    </h2>
 
     <br />
     <button
@@ -89,6 +103,14 @@
       style="width: 100%"
     >
       Make the Order!
+    </button>
+    <br /><br />
+    <button
+      class="btn btn-lg btn-warning btn-block"
+      type="reset"
+      style="width: 100%"
+    >
+      Reset the Order!
     </button>
   </form>
 </div>
