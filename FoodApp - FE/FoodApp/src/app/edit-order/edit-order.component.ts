@@ -63,12 +63,13 @@ export class EditOrderComponent implements OnInit {
   reply: any;
 
   updateOrder(form: NgForm) {
+    const newDate = new Date();
     let updateOrder = {
       status: true,
       customerName: form.value.customerName,
       customerContact: form.value.contactNumber,
       totalPrice: this.totalOrderPrice,
-      orderCreatedTime: new Date().toString(),
+      orderCreatedTime: newDate
     };
     console.log('Staff id: ' + this.staff.id);
     console.log('Food Order Update : ', updateOrder);
