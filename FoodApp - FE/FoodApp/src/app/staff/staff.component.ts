@@ -11,10 +11,10 @@ export class StaffComponent implements OnInit {
   constructor(private orders: StaffServiceService, private router: Router) {}
 
   allOrders: any;
-  value: number = 3;
+  staff = JSON.parse(localStorage.getItem('user')!);
   ngOnInit(): void {
     // Load all the food Orders
-    this.orders.getAllFoodOrder(this.value).subscribe((data) => {
+    this.orders.getAllFoodOrder(this.staff.id).subscribe((data) => {
       this.allOrders = data;
       console.log('List of all the Orders :', this.allOrders);
     });
@@ -26,7 +26,7 @@ export class StaffComponent implements OnInit {
     this.orders.deleteFoodOrder(orderID).subscribe((response) => {
       console.log(response);
       this.router.navigate(['staff']);
-      this.orders.getAllFoodOrder(this.value).subscribe((data) => {
+      this.orders.getAllFoodOrder(this.staff.id).subscribe((data) => {
         this.allOrders = data;
         console.log(this.allOrders);
       });
