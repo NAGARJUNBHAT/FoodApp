@@ -1,40 +1,76 @@
+<div
+  class="jumbotron"
+  style="
+    padding: 10px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url(../../assets/img/back.jpg);
+    background-size: cover;
+    height: 20vh;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+  "
+>
+  <div class="jumbotron-text" style="margin-top: 50px; font-size: x-large">
+    <h2>
+      {{ manager.name }}<br /><br />
+      {{ manager.email }}<br /><br />
+    </h2>
+  </div>
 
-<div style="margin: 4% auto;" class="container">
-  <h6>{{manager.name}}<br><br>
-    {{manager.email}}<br><br>
-   </h6>
-</div>
-<div style="margin: 2% auto;" class="container">
-    <button type="button" class="btn btn-primary" [routerLink]="['/add-fp']">Add Food product</button>
-</div>
-<div style="margin: 4% auto;" class="container">
+  <div style="margin: 2% auto" class="container">
+    <button
+      type="button"
+      class="btn btn-info"
+      [routerLink]="['/add-fp']"
+      style="width: 300px; font-size: xx-large"
+    >
+      Add Food product
+    </button>
+    <br /><br />
     <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Avaialbility</th>
-            <th scope="col">About </th>
-            <th scope="col">Price</th>
-            <th scope="col">Edit </th>
-            <th scope="col">Delete</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let r of result.data.foodProducts">
-            
-            <td>{{r.id}}</td>
-            <td>{{r.name}}</td>
-            <td>{{r.type}}</td>
-            <td>{{r.avaialbility}}</td>
-            <td>{{r.about}}</td>
-            <td>{{r.price}}</td>
-            <td><button type="button" class="btn btn-secondary" [routerLink]="['/edit-fp/',r.id]">Edit</button></td>
-            <td><button type="button" class="btn btn-danger" (click)="deletefp(r.id)">Delete</button></td>
-
-          </tr>
-        </tbody>
-      </table>
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Avaialbility</th>
+          <th scope="col">About</th>
+          <th scope="col">Price</th>
+          <th scope="col">Edit Product</th>
+          <th scope="col">Delete Product</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of result.data.foodProducts">
+          <td>{{ r.id }}</td>
+          <td>{{ r.name }}</td>
+          <td>{{ r.type }}</td>
+          <td>{{ r.avaialbility }}</td>
+          <td>{{ r.about }}</td>
+          <td>{{ r.price }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              style="width: 100px"
+              [routerLink]="['/edit-fp/', r.id]"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+              style="width: 100px"
+              (click)="deletefp(r.id)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -1,56 +1,131 @@
-
-<div style="margin: 8% auto;" class="container">
-<form #regForm="ngForm" (ngSubmit)="OnSubmit(regForm)">
-        
-    <div class="mb-3">
-        <label for="product" class="form-label">Name </label>
-        <input type="text" class="form-control" id="product"
+<div style="margin: 2% auto; text-align: center" class="container">
+  <h1>Add A new Food Product to the Menu!</h1>
+  <img
+    src="../../assets/img/food.png"
+    alt="Logo can't be loaded"
+    height="300px"
+  />
+</div>
+<div class="container">
+  <form #regForm="ngForm" (ngSubmit)="OnSubmit(regForm)">
+    <div
+      class="mb-3"
+      style="display: flex; flex-direction: row; justify-content: center"
+    >
+      <label for="product" class="form-label">Name of the Food Product </label>
+      &nbsp;&nbsp;&nbsp;
+      <input
+        style="width: 300px"
+        type="text"
+        class="form-control"
+        placeholder="Enter the name of the Food Product"
+        id="product"
         name="product"
-        #product='ngModel' 
-        ngModel 
-        required>
-        <span *ngIf="product.touched && product.invalid" style="color: red;">Please fill out this field</span>
+        #product="ngModel"
+        ngModel
+        required
+      />
+      <span *ngIf="product.touched && product.invalid" style="color: red"
+        >Please fill out this field</span
+      >
     </div>
-    <div class="mb-3">
-        <label for="type" class="form-label">Type </label>
-        <input type="text" class="form-control" id="type"
+    <div
+      class="mb-3"
+      style="display: flex; flex-direction: row; justify-content: center"
+    >
+      <label for="type" class="form-label">Type of the Food Product </label>
+      &nbsp;&nbsp;&nbsp;
+      <input
+        style="width: 300px"
+        type="text"
+        placeholder="Enter the type of the Food Product"
+        class="form-control"
+        id="type"
         name="type"
-        #type='ngModel' 
-        ngModel 
-        required>
-        <span *ngIf="type.touched && type.invalid" style="color: red;">Please fill out this field</span>
+        #type="ngModel"
+        ngModel
+        required
+      />
+      <span *ngIf="type.touched && type.invalid" style="color: red"
+        >Please fill out this field</span
+      >
     </div>
-    <div class="mb-3">
-        <label for="about" class="form-label">About </label>
-        <input type="text" class="form-control" id="about"
+    <div
+      class="mb-3"
+      style="display: flex; flex-direction: row; justify-content: center"
+    >
+      <label for="about" class="form-label">About the Food Product </label>
+      &nbsp;&nbsp;&nbsp;
+      <input
+        style="width: 300px"
+        type="text"
+        placeholder="Enter About the Food Product"
+        class="form-control"
+        id="about"
         name="about"
-        #about='ngModel' 
-        ngModel 
-        required>
-        <span *ngIf="about.touched && about.invalid" style="color: red;">Please fill out this field</span>
+        #about="ngModel"
+        ngModel
+        required
+      />
+      <span *ngIf="about.touched && about.invalid" style="color: red"
+        >Please fill out this field</span
+      >
     </div>
-    <div class="mb-3">
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" checked
-            name="avail" #avail='ngModel' ngModel>
-            <label class="form-check-label" for="flexCheckDefault">Is available?</label>
-        </div>
-        
-        <!-- <select class="form-control" name="availability" #availability="ngModel" ngModel required>
+    <div
+      class="mb-3"
+      style="display: flex; flex-direction: row; justify-content: center"
+    >
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="false"
+          id="flexCheckDefault"
+          checked
+          name="avaialbility"
+          #avaialbility="ngModel"
+          ngModel
+        />
+        <label class="form-check-label" for="flexCheckDefault"
+          >Is available?</label
+        >
+      </div>
+
+      <!-- <select class="form-control" name="availability" #availability="ngModel" ngModel required>
             <option value="" disabled selected><small>Choose availability</small></option>
             <option selected>Available</option>
         </select> -->
     </div>
-    <div class="mb-3">
-        <label for="price" class="form-label">Price </label>
-        <input type="number" class="form-control" id="price"
+    <div
+      class="mb-3"
+      style="display: flex; flex-direction: row; justify-content: center"
+    >
+      <label for="price" class="form-label">Price of the Food Product </label>
+      &nbsp;&nbsp;&nbsp;
+      <input
+        style="width: 300px"
+        type="number"
+        class="form-control"
+        placeholder="Enter the price of the Food Product"
+        id="price"
         name="price"
-        #price='ngModel' 
-        ngModel 
-        required>
-        <span *ngIf="price.touched && price.invalid" style="color: red;">Please fill out this field</span>
+        #price="ngModel"
+        ngModel
+        required
+      />
+      <span *ngIf="price.touched && price.invalid" style="color: red"
+        >Please fill out this field</span
+      >
     </div>
-      
-    <button [disabled]="!regForm.valid" type="submit" class="btn btn-primary">Submit</button>
+    <div style="text-align: center">
+      <button
+        [disabled]="!regForm.valid"
+        type="submit"
+        class="btn btn-success btn-lg"
+        style="width: 300px"
+      >
+        Add the Food Product
+      </button>
+    </div>
   </form>
 </div>
