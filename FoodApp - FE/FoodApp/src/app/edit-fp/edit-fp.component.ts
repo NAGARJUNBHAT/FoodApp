@@ -27,7 +27,6 @@ export class EditFpComponent implements OnInit {
       
       for(let r of this.result.data.foodProducts){
         if(r.id==id) {
-          console.log(id,r.id);
           this.selectedProduct=r;
           break;
         }

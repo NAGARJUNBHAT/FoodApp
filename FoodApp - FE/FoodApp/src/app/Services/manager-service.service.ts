@@ -24,4 +24,7 @@ export class ManagerServiceService {
     return this.http.post(`http://localhost:8080/foodproduct/${menuId}`,foodProduct);
   }
 
+  getAllFoodProducts(){
+    return this.http.get("http://localhost:8080/foodproduct")
+  }
 }
