@@ -19,13 +19,13 @@
         type="text"
         class="form-control"
         placeholder="Enter the name of the Food Product"
-        id="product"
-        name="product"
-        #product="ngModel"
+        id="name"
+        name="name"
+        #name="ngModel"
         ngModel
         required
       />
-      <span *ngIf="product.touched && product.invalid" style="color: red"
+      <span *ngIf="name.touched && name.invalid" style="color: red"
         >Please fill out this field</span
       >
     </div>
@@ -82,8 +82,8 @@
           value="false"
           id="flexCheckDefault"
           checked
-          name="avaialbility"
-          #avaialbility="ngModel"
+          name="availability"
+          #availability="ngModel"
           ngModel
         />
         <label class="form-check-label" for="flexCheckDefault"
