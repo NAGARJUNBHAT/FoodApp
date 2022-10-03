@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staff.component.css'],
 })
 export class StaffComponent implements OnInit {
+
+  searchOrder: any;
   constructor(private orders: StaffServiceService, private router: Router) {}
 
   allOrders: any;
@@ -38,4 +40,5 @@ export class StaffComponent implements OnInit {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
 }

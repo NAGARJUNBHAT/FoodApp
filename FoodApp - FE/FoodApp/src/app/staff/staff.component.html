@@ -35,10 +35,9 @@
           placeholder="Search for a particular Order"
           aria-label="Search"
           aria-describedby="search-addon"
+          [(ngModel)]="searchOrder"
         />
-        <button type="button" class="btn btn-outline-primary">
-          Find Order
-        </button>
+        
       </div>
       <br /><br />
       <button
@@ -51,7 +50,7 @@
       </button>
       <div class="row row-cols-1 row-cols-md-4 g-2">
         <!-- ngFor in this div to repeat the cards -->
-        <div class="col" *ngFor="let fo of allOrders.data">
+        <div class="col" *ngFor="let fo of allOrders.data | filter : searchOrder">
           <div class="card">
             <div class="card-body" style="color: black">
               <img
