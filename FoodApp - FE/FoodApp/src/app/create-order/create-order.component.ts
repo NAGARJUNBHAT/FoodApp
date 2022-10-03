@@ -74,6 +74,7 @@ export class CreateOrderComponent implements OnInit {
     this.reply = confirm('Do you want to place the order? ');
     if (this.reply == true) {
       this.fOService.saveFoodOrder(this.staff.id, newOrder).subscribe((r) => {
+        console.log('Placed Order : ' + newOrder);
         this.res = r;
         console.log(this.res.message);
         if (!this.res.error) {
