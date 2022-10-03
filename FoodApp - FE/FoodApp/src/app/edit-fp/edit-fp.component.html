@@ -1,68 +1,116 @@
-<div style="margin: 4% auto;" class="container">
-    <h6>Update food product</h6>
+<div style="margin: 1% auto; text-align: center" class="container">
+  <h1>Update the Food Product!</h1>
+  <img
+    src="../../assets/img/food1.png"
+    alt="Logo can't be loaded"
+    height="300px"
+  />
 </div>
 
-<div style="margin: 4% auto;" class="container">
-    <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
-          
-        <div class="mb-3">
-            <label for="product" class="form-label">Id </label>
-            <input type="text" class="form-control" id="id"
-            name="id"
-            #id='ngModel' 
-            [(ngModel)]="selectedProduct.id" 
-            readonly
-            >
-           </div>
-        <div class="mb-3">
-            <label for="product" class="form-label">Name </label>
-            <input type="text" class="form-control" id="name"
-            name="name"
-            #name='ngModel' 
-            [(ngModel)]="selectedProduct.name" 
-            required>
-            <span *ngIf="name.touched && name.invalid" style="color: red;">Please fill out this field</span>
-        </div>
-        <div class="mb-3">
-            <label for="type" class="form-label">Type </label>
-            <input type="text" class="form-control" id="type"
-            name="type"
-            #type='ngModel' 
-            [(ngModel)]="selectedProduct.type"  
-            required>
-            <span *ngIf="type.touched && type.invalid" style="color: red;">Please fill out this field</span>
-        </div>
-        <div class="mb-3">
-            <label for="about" class="form-label">About </label>
-            <input type="text" class="form-control" id="about"
-            name="about"
-            #about='ngModel' 
-            [(ngModel)]="selectedProduct.about"  
-            required>
-            <span *ngIf="about.touched && about.invalid" style="color: red;">Please fill out this field</span>
-        </div>
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="false" id="flexCheckDefault" checked
-                name="avail" #avail='ngModel' [(ngModel)]="selectedProduct.available" >
-                <label class="form-check-label" for="flexCheckDefault">Is available?</label>
-            </div>
-            
-            <!-- <select class="form-control" name="availability" #availability="ngModel" ngModel required>
+<div class="container">
+  <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
+    <div class="mb-3">
+      <label for="product" class="form-label">Id </label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        name="id"
+        #id="ngModel"
+        [(ngModel)]="selectedProduct.id"
+        readonly
+      />
+    </div>
+    <div class="mb-3">
+      <label for="product" class="form-label">Name </label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="selectedProduct.name"
+        required
+      />
+      <span *ngIf="name.touched && name.invalid" style="color: red"
+        >Please fill out this field</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="type" class="form-label">Type </label>
+      <input
+        type="text"
+        class="form-control"
+        id="type"
+        name="type"
+        #type="ngModel"
+        [(ngModel)]="selectedProduct.type"
+        required
+      />
+      <span *ngIf="type.touched && type.invalid" style="color: red"
+        >Please fill out this field</span
+      >
+    </div>
+    <div class="mb-3">
+      <label for="about" class="form-label">About </label>
+      <input
+        type="text"
+        class="form-control"
+        id="about"
+        name="about"
+        #about="ngModel"
+        [(ngModel)]="selectedProduct.about"
+        required
+      />
+      <span *ngIf="about.touched && about.invalid" style="color: red"
+        >Please fill out this field</span
+      >
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="false"
+          id="flexCheckDefault"
+          checked
+          name="avail"
+          #avail="ngModel"
+          [(ngModel)]="selectedProduct.available"
+        />
+        <label class="form-check-label" for="flexCheckDefault"
+          >Is available?</label
+        >
+      </div>
+
+      <!-- <select class="form-control" name="availability" #availability="ngModel" ngModel required>
                 <option value="" disabled selected><small>Choose availability</small></option>
                 <option selected>Available</option>
             </select> -->
-        </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">Price </label>
-            <input type="number" class="form-control" id="price"
-            name="price"
-            #price='ngModel' 
-            [(ngModel)]="selectedProduct.price"  
-            required>
-            <span *ngIf="price.touched && price.invalid" style="color: red;">Please fill out this field</span>
-        </div>
-          
-        <button [disabled]="!editForm.valid" type="submit" class="btn btn-primary">Submit</button>
-      </form>
     </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price </label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        name="price"
+        #price="ngModel"
+        [(ngModel)]="selectedProduct.price"
+        required
+      />
+      <span *ngIf="price.touched && price.invalid" style="color: red"
+        >Please fill out this field</span
+      >
+    </div>
+
+    <button
+      [disabled]="!editForm.valid"
+      type="submit"
+      class="btn btn-warning btn-lg"
+      style="width: 300px"
+    >
+      Update the Food Product
+    </button>
+  </form>
+</div>
