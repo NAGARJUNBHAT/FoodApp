@@ -11,6 +11,14 @@
       <button type="button" class="btn btn-outline-primary">Find Order</button>
     </div>
     <br /><br />
+    <button
+      type="button"
+      class="btn btn-info"
+      [routerLink]="['/createOrder']"
+      style="width: 300px; font-size: xx-large"
+    >
+      Add Food Order
+    </button>
     <div class="row row-cols-1 row-cols-md-4 g-4">
       <!-- ngFor in this div to repeat the cards -->
       <div class="col" *ngFor="let fo of allOrders.data">

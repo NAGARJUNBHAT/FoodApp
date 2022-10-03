@@ -30,7 +30,7 @@ public class FoodOrderService {
 		Optional<User> optional = userDao.getUserById(id);
 		ResponseStructure<FoodOrder> structure = new ResponseStructure<>();
 		
-		if(optional.get().getRole().equals("staff")) {
+		if(optional.get().getRole().equals("BranchManager")) {
 			structure.setError(true);
 			structure.setMessage("Only staff can create orders");
 			return new ResponseEntity<ResponseStructure<FoodOrder>>(structure, HttpStatus.OK);
