@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { AddFpComponent } from './add-fp/add-fp.component';
 import { EditFpComponent } from './edit-fp/edit-fp.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
+import { BillComponent } from './bill/bill.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'add-fp', component: AddFpComponent },
   { path: 'edit-fp/:id', component: EditFpComponent },
   { path: 'create-order', component: CreateOrderComponent },
-  { path: 'edit-order/:id', component: EditOrderComponent }
+  { path: 'edit-order/:id', component: EditOrderComponent },
+  { path: 'bill/:id', component: BillComponent}
 ];
 
 @NgModule({

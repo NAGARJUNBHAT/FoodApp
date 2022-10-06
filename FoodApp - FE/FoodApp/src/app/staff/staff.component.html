@@ -83,6 +83,13 @@
 
             <div class="card-body text-center">
               <button
+                class="btn btn-warning"
+                style="width: 200px"
+                [routerLink]="['/bill/', fo.id]"
+              >
+                View Bill
+              </button><br /><br />
+              <button
                 class="btn btn-info"
                 style="width: 200px"
                 [routerLink]="['/edit-order/', fo.id]"

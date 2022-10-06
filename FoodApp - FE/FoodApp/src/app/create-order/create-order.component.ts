@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { StaffServiceService } from '../Services/staff-service.service';
 import { ManagerServiceService } from '../Services/manager-service.service';
+import { ItemService } from '../Services/item.service';
 
 @Component({
   selector: 'app-create-order',
@@ -13,13 +14,15 @@ export class CreateOrderComponent implements OnInit {
   res: any;
   staff = JSON.parse(localStorage.getItem('user')!);
   itemCountMap = new Map<number, number>();
+  foodOrderId!: Number;
   orderItems: any;
   totalOrderPrice: number = 0;
 
   constructor(
     private fPservice: ManagerServiceService,
     private fOService: StaffServiceService,
-    private route: Router
+    private route: Router,
+    private item:ItemService
   ) {}
 
   allFoodProducts: any;
@@ -59,7 +62,10 @@ export class CreateOrderComponent implements OnInit {
   removeItem(itemId: any, itemPrice: any) {
     // console.log(itemId, itemPrice);
     if (this.itemCountMap.has(itemId)) {
-      if (this.itemCountMap.get(itemId) === 0) {
+      if (this.itemCountMap.get(itemId) === 1 ) {
+        this.totalOrderPrice -= itemPrice;
+        this.itemCountMap.delete(itemId);
+        
       } else {
         this.itemCountMap.set(itemId, this.itemCountMap.get(itemId)! - 1);
         this.totalOrderPrice -= itemPrice;
@@ -84,9 +90,19 @@ export class CreateOrderComponent implements OnInit {
       this.fOService.saveFoodOrder(this.staff.id, newOrder).subscribe((r) => {
         console.log('Placed Order : ' + newOrder);
         this.res = r;
+        this.foodOrderId=this.res.data.id
         console.log(this.res.message);
+        
         if (!this.res.error) {
           alert('Food Order made successfully!');
+          //add foodProducts to items table
+          this.itemCountMap.forEach((value, key) => {
+            let data={"id":key,"quantity":value};
+            this.item.saveItem(data, this.foodOrderId).subscribe((p)=>{
+              console.log(p);
+            })
+        }); 
+
           this.route.navigate(['/staff']);
         }
       });
