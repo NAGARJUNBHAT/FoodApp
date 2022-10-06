@@ -1,5 +1,6 @@
 package com.example.FoodApp.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,48 @@ public class ItemService {
         }
         
     }
+    
+    public ResponseEntity<ResponseStructure<List<Item>>> getItems(int foodOrderId){
+		ResponseStructure<List<Item>> structure = new ResponseStructure<>();
+		structure.setError(false);
+		structure.setMessage("Items in food order retrived");
+		structure.setData(itemDao.getItemsByOrderId(foodOrderId));
+		return new ResponseEntity<ResponseStructure<List<Item>>>(structure, HttpStatus.OK);
+	}
+
+    
+//    public ResponseEntity<ResponseStructure<Item>> editItem(Item item, int foodOrderId){
+//        Optional<FoodProduct> foodProductOptional = foodProductDao.getFoodProductById(item.getId());
+//        ResponseStructure<Item> structure = null;
+//        if(foodProductOptional!=null) {
+//        	
+//        
+//	         structure=new ResponseStructure<>();
+//	        item.setId(foodProductOptional.get().getId());
+//	        item.setName(foodProductOptional.get().getName());
+//	        item.setType(foodProductOptional.get().getType());
+//	        item.setPrice(foodProductOptional.get().getPrice());
+//	        System.out.println(foodProductOptional.get().getId());
+//	        System.out.println(foodOrderId);
+//	        Optional<FoodOrder> foodOptional = foodOrderDao.getFoodOrderById(foodOrderId);
+//	        if(foodOptional.isEmpty()){
+//	            System.out.print("No id found");
+//	            
+//	        }else {
+//	          item.setFoodOrder(foodOptional.get());
+//	          structure.setError(false);
+//	            structure.setMessage("Item is added");
+//	            structure.setData(itemDao.addItem(item));
+//	        }
+//	                
+//	        return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
+//        }
+//        else {
+//        	return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.NOT_FOUND);
+//        }
+//        
+//    }
+    
+    
 
 }

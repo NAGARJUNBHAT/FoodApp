@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body mx-4">
+        <div class="container">
+            <p><b>Customer Name:</b><br />
+            {{orderDetails.data.customerName}}</p>
+            <p><b>Contact Number:</b><br />
+            {{orderDetails.data.contactNumber}}</p>            
+        </div>
+      <div class="container">
+        <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let r of result.data">
+                <td>{{ r.id }}</td>
+                <td>{{ r.name }}</td>
+                <td>{{ r.type }}</td>
+                <td>{{ r.quantity }}</td>
+                <td>{{ r.price }}</td>
+                <td>{{ r.price*r.quantity}}</td>
+            </tbody>
+
+        </table>
+        
+        <div class="row" style="margin-right:60px;">
+            <div class="col-xl-12">
+
+              <p class="float-end"
+                style="font-size: 30px; color:black; font-weight: 200;">
+                Total Amount:
+                <span><i class="fas fa-dollar-sign"></i>{{orderDetails.data.totalPrice}}</span></p>
+            </div>
+    
+          </div>
+    
+        </div>
+    </div>
+</div>  

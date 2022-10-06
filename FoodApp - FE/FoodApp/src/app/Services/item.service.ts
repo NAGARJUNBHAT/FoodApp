@@ -8,10 +8,15 @@ export class ItemService {
 
   constructor(private http: HttpClient) { }
 
-  saveItem(item : any, foodOrderId : any) {
+  saveItem(item : any, foodOrderId : Number) {
     console.log(item);
     console.log(foodOrderId);
     
     return this.http.post(`http://localhost:8080/item/${foodOrderId}`,item);
+  }
+
+
+  getItem(foodOrderId: Number){
+    return this.http.get(`http://localhost:8080/item/${foodOrderId}`);
   }
 }
