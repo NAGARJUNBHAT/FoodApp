@@ -92,4 +92,8 @@ export class CreateOrderComponent implements OnInit {
       });
     }
   }
+  resetTotalPrice() {
+    this.totalOrderPrice = 0;
+    console.log('Reset Working!');
+  }
 }
