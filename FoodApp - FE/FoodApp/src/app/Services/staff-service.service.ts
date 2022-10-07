@@ -26,4 +26,9 @@ export class StaffServiceService {
   saveFoodOrder(staffId:number, foodOrder:any){
     return this.http.post(`http://localhost:8080/foodorder/${staffId}`, foodOrder)
   }
+
+
+  updateOrderStatus(status: String, id: number){
+    return this.http.put(`http://localhost:8080/foodOrder/${id}`,status)
+  }
 }
