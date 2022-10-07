@@ -54,10 +54,30 @@
 			"response": []
 		},
 		{
-			"name": "Update item by order id",
+			"name": "Update item",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"7\",\r\n    \"quantity\":\"5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/item/18",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"item",
+						"18"
+					]
+				}
 			},
 			"response": []
 		}
