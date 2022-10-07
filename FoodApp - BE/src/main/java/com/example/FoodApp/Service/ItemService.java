@@ -67,38 +67,52 @@ public class ItemService {
 	}
 
     
-//    public ResponseEntity<ResponseStructure<Item>> editItem(Item item, int foodOrderId){
-//        Optional<FoodProduct> foodProductOptional = foodProductDao.getFoodProductById(item.getId());
-//        ResponseStructure<Item> structure = null;
-//        if(foodProductOptional!=null) {
-//        	
-//        
-//	         structure=new ResponseStructure<>();
-//	        item.setId(foodProductOptional.get().getId());
-//	        item.setName(foodProductOptional.get().getName());
-//	        item.setType(foodProductOptional.get().getType());
-//	        item.setPrice(foodProductOptional.get().getPrice());
-//	        System.out.println(foodProductOptional.get().getId());
-//	        System.out.println(foodOrderId);
-//	        Optional<FoodOrder> foodOptional = foodOrderDao.getFoodOrderById(foodOrderId);
+    public ResponseEntity<ResponseStructure<Item>> editItem(Item item){	
+    	ResponseStructure<Item> structure = new ResponseStructure<>();
+    	
+		Item item2 = itemDao.getItemById(item.getId()).get();
+		if(item2!=null) {
+			FoodOrder foodOrder = item2.getFoodOrder();
+			item2.setFoodOrder(foodOrder);
+			item2.setQuantity(item.getQuantity());
+			structure.setError(false);
+			structure.setMessage("Item Updated");
+			structure.setData(itemDao.editItem(item2));
+		}
+		else {
+			structure.setError(false);
+			structure.setMessage("Item not  Updated");
+//			structure.setData(itemDao.editItem(item2));
+		}
+		
+		
+		return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
+	
+		
+//    	Optional<Item> optional = itemDao.getItemById(item.getId());
+//    	if(optional.isEmpty()) {
+//    	   structure.setError(true);
+//    	   structure.setMessage("No id found");
+//    	}else {
+//    		item.setId(optional.get().getId());
+// 	        item.setName(optional.get().getName());
+// 	        item.setType(optional.get().getType());
+// 	        item.setPrice(optional.get().getPrice());
+// 	        item.setQuantity(item.getQuantity());
+// 	        Optional<FoodOrder> foodOptional = foodOrderDao.getFoodOrderById(foodOrderId);
 //	        if(foodOptional.isEmpty()){
-//	            System.out.print("No id found");
+//	            System.out.print("food order id not found");
 //	            
 //	        }else {
-//	          item.setFoodOrder(foodOptional.get());
-//	          structure.setError(false);
-//	            structure.setMessage("Item is added");
-//	            structure.setData(itemDao.addItem(item));
+////	        	item.setFoodOrder(foodOptional.get());
+//	          	structure.setError(false);
+//	  			structure.setMessage("Item updated");
+//	            structure.setData(itemDao.editItem(item));
 //	        }
-//	                
-//	        return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
-//        }
-//        else {
-//        	return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.NOT_FOUND);
-//        }
-//        
-//    }
+//    	}      
+//	       return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
+//   
     
+    }
     
-
 }

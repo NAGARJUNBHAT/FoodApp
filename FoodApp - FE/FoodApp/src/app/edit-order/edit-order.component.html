@@ -63,7 +63,7 @@
       <br />
   
       <p style="margin: 1px 0">Choose From Menu:</p>
-      <div class="list-group foodproduct" *ngFor="let f of allFoodProducts.data">
+      <div class="list-group foodproduct" *ngFor="let f of allItems.data">
         <a
           class="list-group-item list-group-item-action"
           style="margin: 1px auto"
@@ -106,12 +106,13 @@
       </button>
       <br /><br />
       <button
-        class="btn btn-lg btn-warning btn-block"
-        type="reset"
-        style="width: 100%"
-      >
-        Reset the Order!
-      </button>
+      class="btn btn-lg btn-warning btn-block"
+      type="reset"
+      style="width: 100%"
+      (click)="resetTotalPrice()"
+    >
+      Reset the Order!
+    </button>
     </form>
   </div>
   

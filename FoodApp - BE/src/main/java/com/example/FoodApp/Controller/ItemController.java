@@ -28,12 +28,12 @@ public class ItemController {
     }
     
     
-//    @PutMapping("/item/{foodOrderId}")
-//    public ResponseEntity<ResponseStructure<Item>> editItem(@RequestBody Item item,@PathVariable int foodOrderId){
-//        return itemService.editItem(item,foodOrderId);
-//    }
-//    
-//    
+    @PutMapping("/item")
+    public ResponseEntity<ResponseStructure<Item>> editItem(@RequestBody Item item){
+        return itemService.editItem(item);
+    }
+    
+    
     @GetMapping("/item/{foodOrderId}")
     public ResponseEntity<ResponseStructure<List<Item>>> getItem(@PathVariable int foodOrderId){
         return itemService.getItems(foodOrderId);
