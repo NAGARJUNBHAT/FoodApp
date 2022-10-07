@@ -19,7 +19,8 @@ import com.example.FoodApp.util.ResponseStructure;
 @Service
 public class ItemService {
 	
-	@Autowired
+    
+    @Autowired
     ItemDao itemDao;
     @Autowired
     FoodOrderDao foodOrderDao;
@@ -27,36 +28,28 @@ public class ItemService {
     FoodProductDao foodProductDao;
     
     public ResponseEntity<ResponseStructure<Item>> saveItem(Item item, int foodOrderId){
+        ResponseStructure<Item> structure=new ResponseStructure<>();
+     
         Optional<FoodProduct> foodProductOptional = foodProductDao.getFoodProductById(item.getId());
-        ResponseStructure<Item> structure = null;
-        if(foodProductOptional!=null) {
-        	
-        
-	         structure=new ResponseStructure<>();
-	        item.setId(foodProductOptional.get().getId());
-	        item.setName(foodProductOptional.get().getName());
-	        item.setType(foodProductOptional.get().getType());
-	        item.setPrice(foodProductOptional.get().getPrice());
-	        System.out.println(foodProductOptional.get().getId());
-	        System.out.println(foodOrderId);
-	        Optional<FoodOrder> foodOptional = foodOrderDao.getFoodOrderById(foodOrderId);
-	        if(foodOptional.isEmpty()){
-	            System.out.print("No id found");
-	            
-	        }else {
-	          item.setFoodOrder(foodOptional.get());
-	          structure.setError(false);
-	            structure.setMessage("Item is added");
-	            structure.setData(itemDao.addItem(item));
-	        }
-	                
-	        return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
+        Item itemToBeadded= new Item();
+        itemToBeadded.setName(foodProductOptional.get().getName());
+        itemToBeadded.setType(foodProductOptional.get().getType());
+        itemToBeadded.setPrice(foodProductOptional.get().getPrice());
+        itemToBeadded.setQuantity(item.getQuantity());
+        Optional<FoodOrder> foodOptional = foodOrderDao.getFoodOrderById(foodOrderId);
+        if(foodOptional.isEmpty()){
+            System.out.print("No id found");
+            
+        }else {
+          itemToBeadded.setFoodOrder(foodOptional.get());
+          structure.setError(false);
+            structure.setMessage("Item is added");
+            structure.setData(itemDao.addItem(itemToBeadded));
         }
-        else {
-        	return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.NOT_FOUND);
-        }
+                
+        return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
         
-    }
+    }  
     
     public ResponseEntity<ResponseStructure<List<Item>>> getItems(int foodOrderId){
 		ResponseStructure<List<Item>> structure = new ResponseStructure<>();
@@ -68,51 +61,27 @@ public class ItemService {
 
     
     public ResponseEntity<ResponseStructure<Item>> editItem(Item item){	
-    	ResponseStructure<Item> structure = new ResponseStructure<>();
-    	
+    	ResponseStructure<Item> structure = new ResponseStructure<>();    	
 		Item item2 = itemDao.getItemById(item.getId()).get();
+		
 		if(item2!=null) {
 			FoodOrder foodOrder = item2.getFoodOrder();
-			item2.setFoodOrder(foodOrder);
-			item2.setQuantity(item.getQuantity());
+			item.setName(item2.getName());
+			item.setPrice(item2.getPrice());
+			item.setType(item2.getType());
+			item.setFoodOrder(foodOrder);
 			structure.setError(false);
 			structure.setMessage("Item Updated");
-			structure.setData(itemDao.editItem(item2));
+			structure.setData(itemDao.editItem(item));
 		}
 		else {
 			structure.setError(false);
 			structure.setMessage("Item not  Updated");
-//			structure.setData(itemDao.editItem(item2));
 		}
 		
 		
 		return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
 	
-		
-//    	Optional<Item> optional = itemDao.getItemById(item.getId());
-//    	if(optional.isEmpty()) {
-//    	   structure.setError(true);
-//    	   structure.setMessage("No id found");
-//    	}else {
-//    		item.setId(optional.get().getId());
-// 	        item.setName(optional.get().getName());
-// 	        item.setType(optional.get().getType());
-// 	        item.setPrice(optional.get().getPrice());
-// 	        item.setQuantity(item.getQuantity());
-// 	        Optional<FoodOrder> foodOptional = foodOrderDao.getFoodOrderById(foodOrderId);
-//	        if(foodOptional.isEmpty()){
-//	            System.out.print("food order id not found");
-//	            
-//	        }else {
-////	        	item.setFoodOrder(foodOptional.get());
-//	          	structure.setError(false);
-//	  			structure.setMessage("Item updated");
-//	            structure.setData(itemDao.editItem(item));
-//	        }
-//    	}      
-//	       return new ResponseEntity<ResponseStructure<Item>>(structure, HttpStatus.OK);
-//   
-    
     }
     
 }
