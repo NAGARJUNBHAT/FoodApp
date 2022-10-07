@@ -8,14 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.example.FoodApp.Dao.FoodOrderDao;
 import com.example.FoodApp.Dao.FoodProductDao;
 import com.example.FoodApp.Dao.MenuDao;
 import com.example.FoodApp.Dao.UserDao;
-import com.example.FoodApp.Models.FoodOrder;
 import com.example.FoodApp.Models.FoodProduct;
 import com.example.FoodApp.Models.Menu;
-import com.example.FoodApp.Models.User;
 import com.example.FoodApp.util.ResponseStructure;
 
 @Service

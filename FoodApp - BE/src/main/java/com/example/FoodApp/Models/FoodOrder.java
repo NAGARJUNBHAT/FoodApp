@@ -21,7 +21,7 @@ public class FoodOrder {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private boolean status;
+	private String status;
 	private double totalPrice;
 	private Date orderCreatedTime;
 	private Date orderDeliveryTime;
@@ -53,11 +53,11 @@ public class FoodOrder {
 		this.id = id;
 	}
 	
-	public boolean isStatus() {
+	public String getStatus() {
 		return status;
 	}
 	
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 	

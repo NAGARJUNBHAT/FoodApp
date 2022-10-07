@@ -19,4 +19,8 @@ export class ItemService {
   getItem(foodOrderId: Number){
     return this.http.get(`http://localhost:8080/item/${foodOrderId}`);
   }
+
+  editItem(item: any){
+    return this.http.put("http://localhost:8080/item",item);
+  }
 }

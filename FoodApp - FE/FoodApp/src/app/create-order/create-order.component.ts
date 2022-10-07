@@ -77,7 +77,7 @@ export class CreateOrderComponent implements OnInit {
   addNewOrder(form: NgForm) {
     const newDate = new Date();
     let newOrder = {
-      status: true,
+      status: "confirmed",
       customerName: form.value.customerName,
       contactNumber: form.value.contactNumber,
       totalPrice: this.totalOrderPrice,

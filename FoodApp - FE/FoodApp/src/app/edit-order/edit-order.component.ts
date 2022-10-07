@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ItemService } from '../Services/item.service';
 import { ManagerServiceService } from '../Services/manager-service.service';
 import { StaffServiceService} from './../Services/staff-service.service'
 
@@ -18,9 +19,9 @@ export class EditOrderComponent implements OnInit {
   totalOrderPrice: number = 0;
   itemCountMap = new Map<number, number>();
   staff = JSON.parse(localStorage.getItem("user")!);
-  allFoodProducts : any;
+  allItems : any;
 
-  constructor( private orders : StaffServiceService, private foodProduct:ManagerServiceService, private router : Router, private route:ActivatedRoute ) { }
+  constructor( private orders : StaffServiceService, private item:ItemService, private router : Router, private route:ActivatedRoute ) { }
 
   allFoodOrders: any;
 
@@ -37,15 +38,21 @@ export class EditOrderComponent implements OnInit {
         console.log(r);
         
         if(r.id==this.id){
-          this.selectedProduct=r;          
+          this.selectedProduct=r;
+          this.totalOrderPrice = r.totalPrice;
+                    
           break;
         }
       }
     });
    
-     this.foodProduct.getAllFoodProducts().subscribe((data)=>{
-       this.allFoodProducts=data;
-       console.log(this.allFoodProducts.data);
+     this.item.getItem(this.id).subscribe((data)=>{
+       this.allItems=data;
+       console.log(this.allItems.data);
+       for(let i of this.allItems.data){
+        this.itemCountMap.set(i.id,i.quantity);
+       }
+       console.log(this.itemCountMap);
        
      })
 
@@ -71,14 +78,14 @@ export class EditOrderComponent implements OnInit {
 
   removeItem(itemId: any, itemPrice: any) {
     // console.log(itemId, itemPrice);
+    console.log(this.itemCountMap);
     if (this.itemCountMap.has(itemId)) {
-      if (this.itemCountMap.get(itemId) === 0) {
+      if (this.itemCountMap.get(itemId) === 0) {        
       } else {
         this.itemCountMap.set(itemId, this.itemCountMap.get(itemId)! - 1);
         this.totalOrderPrice -= itemPrice;
       }
     }
-    // console.log(this.totalOrderPrice);
   }
 
   reply: any;
@@ -87,7 +94,7 @@ export class EditOrderComponent implements OnInit {
     const newDate = new Date();
     let updateOrder = {
       id:this.id,
-      status: true,
+      status: "confirmed",
       customerName: form.value.customerName,
       contactNumber: form.value.contactNumber,
       totalPrice: this.totalOrderPrice,
@@ -102,10 +109,21 @@ export class EditOrderComponent implements OnInit {
         console.log(this.res.message);
         if (!this.res.error) {
           alert('Food Order Updated successfully!');
+          this.itemCountMap.forEach((value, key) => {
+            let data={"id":key,"quantity":value};
+            this.item.editItem(data).subscribe((p)=>{
+              console.log(p);
+            })
+        });
           this.router.navigate(['/staff']);
         }
       });
+      
     }
   }
 
+  resetTotalPrice() {
+    this.totalOrderPrice = 0;
+    console.log('Reset Working!');
+  }
 }
