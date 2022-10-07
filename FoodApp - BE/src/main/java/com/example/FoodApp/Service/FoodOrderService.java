@@ -1,5 +1,6 @@
 package com.example.FoodApp.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,6 +90,23 @@ public class FoodOrderService {
 		return new ResponseEntity<ResponseStructure<FoodOrder>>(structure, HttpStatus.OK);
 	}
 
+	public ResponseEntity<ResponseStructure<FoodOrder>> updateStatus(String status, int foodOrderId) {
+		ResponseStructure<FoodOrder> structure = new ResponseStructure<>();
+		FoodOrder foodOrderTobeUpdated = foodOrderDao.getFoodOrderById(foodOrderId).get();
+//		User user = foodOrderTobeUpdated.getUser();
+//		foodOrder.setUser(user);
+		if(status.equals("delivered")) {
+			foodOrderTobeUpdated.setOrderDeliveryTime(new Date());
+			
+		}
+		foodOrderTobeUpdated.setStatus(status);
+		structure.setError(false);
+		structure.setMessage("Food Order Status Updated");
+		structure.setData(foodOrderDao.updateFoodOrder(foodOrderTobeUpdated));
+
+		return new ResponseEntity<ResponseStructure<FoodOrder>>(structure, HttpStatus.OK);
+	}
+	
 //	public void triggerMail(String body, String mailID) throws MessagingException {
 //		senderService.sendSimpleEmail(mailID, "Order Details - FoodApp", body);
 //	}

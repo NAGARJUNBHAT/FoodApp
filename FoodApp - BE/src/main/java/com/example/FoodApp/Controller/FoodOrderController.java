@@ -47,6 +47,12 @@ public class FoodOrderController {
 		return foodOrderService.updateFoodOrder(foodOrder);
 	}
 	
+	@PutMapping("/foodOrder/{foodOrderId}")
+	public ResponseEntity<ResponseStructure<FoodOrder>> updateStatus(@RequestBody String status, @PathVariable int foodOrderId) {
+		return foodOrderService.updateStatus(status,foodOrderId);
+	}
+	
+	
 	@DeleteMapping("/foodorder/{id}")
 	public ResponseEntity<ResponseStructure<String>> deleteFoodOrderById(@PathVariable int id) {
 		return foodOrderService.deleteFoodOrderById(id);

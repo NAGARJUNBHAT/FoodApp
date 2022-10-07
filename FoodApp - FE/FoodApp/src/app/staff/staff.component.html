@@ -70,15 +70,21 @@
               <li class="list-group-item">
                 Created At : {{ fo.orderCreatedTime }}
               </li>
-              <li class="list-group-item">
+              <li class="list-group-item" >
                 Delivered At : {{ fo.orderDeliveryTime }}
               </li>
               <div
                 class="card-footer text-success"
                 style="text-align: center; font-size: xx-large"
               >
-                {{ fo.status ? "Active" : "InActive" }}
-              </div>
+              <select class="form-control" id="inputSelect" name="status" [(ngModel)]="fo.status" (ngModelChange)="changeStatus($event,fo.id)">
+                <option value="confirmed" >Confirmed</option>
+                <option value="delivered">Delivered</option>
+                <option value="process">In Process</option>
+              </select>
+              
+                <!-- {{ fo.status ? "Active" : "InActive" }} -->
+            </div>
             </ul>
 
             <div class="card-body text-center">
