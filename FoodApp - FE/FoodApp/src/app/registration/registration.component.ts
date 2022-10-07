@@ -12,7 +12,6 @@ import { UserService } from '../Services/user.service';
 export class RegistrationComponent implements OnInit {
 
   createUser : any;
-  user = "user";
   manager = "BranchManager";
   staff = "staff";
 

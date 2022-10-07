@@ -75,9 +75,8 @@
 
         <div class="form-group mb-3">
           <label for="Role">Please Select Your Role</label>
-          <select class="form-control" id="inputSelect" name="role" #role="ngModel" ngModel required>
-            <option>Choose Role</option>
-            <option [ngValue]="user">User</option>
+          <select class="form-control" id="inputSelect" name="role" #role="ngModel" ngModel aria-placeholder="Choose Role" required>
+            <!-- <option selected>Choose Role</option> -->
             <option [ngValue]="manager">Manager</option>
             <option [ngValue]="staff">Staff</option>
           </select>

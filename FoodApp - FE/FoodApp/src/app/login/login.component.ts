@@ -34,9 +34,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem("user", JSON.stringify(this.res.data))
       alert(this.res.message);
       this.route.navigate(["/staff"])
-    }else if(this.res.data.role === "user"){
-      alert(this.res.message);
-      this.route.navigate(["/user-dashboard"])
     }
    })
   }

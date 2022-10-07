@@ -22,12 +22,4 @@ export class AuthorizationService {
       return false
     }
   }
-  isLoggedInUser(){
-    if(this.user!=null && this.user.role === "User"){
-      return true;
-    }else {
-      return false
-    }
-  }
-
 }
