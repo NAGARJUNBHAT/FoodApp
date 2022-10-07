@@ -22,7 +22,7 @@ export class CreateOrderComponent implements OnInit {
     private fPservice: ManagerServiceService,
     private fOService: StaffServiceService,
     private route: Router,
-    private item:ItemService
+    private item: ItemService
   ) {}
 
   allFoodProducts: any;
@@ -36,8 +36,19 @@ export class CreateOrderComponent implements OnInit {
         window.alert('No Food Products Available! \nPlease Contact Manager');
         this.route.navigate(['/staff']);
       } else {
-        this.allFoodProducts = this.allFoodProducts.data;
-        console.log('First Food Product : ', this.allFoodProducts[0]);
+        let finalFoodProds = this.allFoodProducts.data;
+        finalFoodProds = finalFoodProds.filter(function (v: {
+          availability: boolean;
+        }) {
+          return v.availability === true;
+        });
+        this.allFoodProducts = finalFoodProds;
+        let cnt = Object.keys(this.allFoodProducts).length;
+        console.log('Number of Available Food Products: ', cnt);
+        if (cnt == 0) {
+          window.alert('No available Products! \nPlease Contact Manager');
+          this.route.navigate(['/staff']);
+        }
       }
     });
   }
@@ -62,10 +73,9 @@ export class CreateOrderComponent implements OnInit {
   removeItem(itemId: any, itemPrice: any) {
     // console.log(itemId, itemPrice);
     if (this.itemCountMap.has(itemId)) {
-      if (this.itemCountMap.get(itemId) === 1 ) {
+      if (this.itemCountMap.get(itemId) === 1) {
         this.totalOrderPrice -= itemPrice;
         this.itemCountMap.delete(itemId);
-        
       } else {
         this.itemCountMap.set(itemId, this.itemCountMap.get(itemId)! - 1);
         this.totalOrderPrice -= itemPrice;
@@ -77,7 +87,7 @@ export class CreateOrderComponent implements OnInit {
   addNewOrder(form: NgForm) {
     const newDate = new Date();
     let newOrder = {
-      status: "confirmed",
+      status: 'confirmed',
       customerName: form.value.customerName,
       contactNumber: form.value.contactNumber,
       totalPrice: this.totalOrderPrice,
@@ -90,18 +100,18 @@ export class CreateOrderComponent implements OnInit {
       this.fOService.saveFoodOrder(this.staff.id, newOrder).subscribe((r) => {
         console.log('Placed Order : ' + newOrder);
         this.res = r;
-        this.foodOrderId=this.res.data.id
+        this.foodOrderId = this.res.data.id;
         console.log(this.res.message);
-        
+
         if (!this.res.error) {
           alert('Food Order made successfully!');
           //add foodProducts to items table
           this.itemCountMap.forEach((value, key) => {
-            let data={"id":key,"quantity":value};
-            this.item.saveItem(data, this.foodOrderId).subscribe((p)=>{
+            let data = { id: key, quantity: value };
+            this.item.saveItem(data, this.foodOrderId).subscribe((p) => {
               console.log(p);
-            })
-        }); 
+            });
+          });
 
           this.route.navigate(['/staff']);
         }
