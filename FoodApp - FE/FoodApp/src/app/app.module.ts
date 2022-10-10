@@ -15,6 +15,10 @@ import { EditFpComponent } from './edit-fp/edit-fp.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { EditOrderComponent } from './edit-order/edit-order.component';
 import { BillComponent } from './bill/bill.component';
+import { MangStaffComponent } from './mang-staff/mang-staff.component';
+import { AddStaffComponent } from './add-staff/add-staff.component';
+import { EditStaffComponent } from './edit-staff/edit-staff.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { BillComponent } from './bill/bill.component';
     EditFpComponent,
     CreateOrderComponent,
     EditOrderComponent,
-    BillComponent
+    BillComponent,
+    MangStaffComponent,
+    AddStaffComponent,
+    EditStaffComponent,
+    EditProfileComponent
   ],
 
   imports: [

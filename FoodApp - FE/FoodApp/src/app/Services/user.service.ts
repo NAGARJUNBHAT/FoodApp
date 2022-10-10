@@ -2,35 +2,36 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UserService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  registerUser(user : any) {
-    return this.http.post("http://localhost:8080/user", user);
+  getAllUsers() {
+    return this.http.get('http://localhost:8080/all');
   }
 
-  loginUser(user : any){
-    return this.http.post("http://localhost:8080/login", user);
+  registerUser(user: any) {
+    return this.http.post('http://localhost:8080/user', user);
   }
 
-  getAllStaffs(){
-    return this.http.get("http://localhost:8080/getallstaffs");
+  loginUser(user: any) {
+    return this.http.post('http://localhost:8080/login', user);
   }
 
-  getUserById(id : number){
-    return this.http.get(`http://localhost:8080/user/${id}`)
+  getAllStaffs() {
+    return this.http.get('http://localhost:8080/getallstaffs');
   }
 
-  updateUser(user : any){
-    return this.http.put("http://localhost:8080/user",user)
+  getUserById(id: number) {
+    return this.http.get(`http://localhost:8080/user/${id}`);
   }
 
-  deleteUser(userId : number){
-    return this.http.delete(`http://localhost:8080/user/${userId}`)
+  updateUser(user: any) {
+    return this.http.put('http://localhost:8080/user', user);
   }
 
+  deleteUser(userId: number) {
+    return this.http.delete(`http://localhost:8080/user/${userId}`);
+  }
 }

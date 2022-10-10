@@ -1,0 +1,119 @@
+<div
+  class="registerPage"
+  style="
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url(../../assets/img/staff1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  "
+>
+  <br />
+
+  <div
+    class="container"
+    style="
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      padding-bottom: 20px;
+      padding-top: 20px;
+      width: fit-content;
+      color: white;
+    "
+  >
+    <div style="text-align: center" class="container">
+      <h1>Update your Profile Details!</h1>
+      <img
+        src="../../assets/img/editStaff.jpg"
+        alt="Logo can't be loaded"
+        height="200px"
+      />
+    </div>
+
+    <div class="container">
+      <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
+        <div class="mb-3">
+          <label for="product" class="form-label">Id </label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            name="id"
+            #id="ngModel"
+            [(ngModel)]="selectedUser.id"
+            readonly
+            disabled
+          />
+        </div>
+        <div class="mb-3">
+          <label for="product" class="form-label">Name </label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            #name="ngModel"
+            [(ngModel)]="selectedUser.name"
+            required
+          />
+          <span *ngIf="name.touched && name.invalid" style="color: red"
+            >Please fill out this field</span
+          >
+        </div>
+        <div class="mb-3">
+          <label for="type" class="form-label">Email </label>
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            name="email"
+            #email="ngModel"
+            [(ngModel)]="selectedUser.email"
+            required
+          />
+          <span *ngIf="email.touched && email.invalid" style="color: red"
+            >Please fill out this field</span
+          >
+        </div>
+
+        <div class="mb-3">
+          <label for="price" class="form-label">Password </label>
+          <input
+            type="text"
+            class="form-control"
+            id="password"
+            name="password"
+            #password="ngModel"
+            [(ngModel)]="selectedUser.password"
+            required
+          />
+          <span *ngIf="password.touched && password.invalid" style="color: red"
+            >Please fill out this field</span
+          >
+        </div>
+
+        <button
+          [disabled]="!editForm.valid"
+          type="submit"
+          class="btn btn-warning btn-lg"
+          style="width: 100%"
+        >
+          Update your Profile
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<footer
+  class="text-center text-white fixed-bottom"
+  style="background-color: #caced1"
+>
+  <div
+    class="text-center text-dark p-3"
+    style="background-color: rgba(0, 0, 0, 0.2); position: relative"
+  >
+    © 2022 Copyright:
+    <a class="text-dark" href="#">Developed by Group 1</a>
+  </div>
+</footer>

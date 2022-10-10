@@ -52,4 +52,15 @@ export class AppComponent {
       this.router.navigate(['login']);
     }
   }
+  goEditProfile() {
+    try {
+      this.user = JSON.parse(localStorage.getItem('user')!);
+      console.log(this.user.id);
+      console.log(this.user);
+      this.router.navigate(['editProfile', this.user.id]);
+    } catch (error) {
+      alert('Please Login First!');
+      this.router.navigate(['login']);
+    }
+  }
 }

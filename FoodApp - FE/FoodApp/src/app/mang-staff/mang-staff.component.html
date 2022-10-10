@@ -39,61 +39,43 @@
       >
         LOGOUT OF THE ACCOUNT
       </button>
-    </div>
-
-    <div style="margin: 1% auto" class="container">
-      <button
-        type="button"
-        class="btn btn-warning"
-        [routerLink]="['/showStaff']"
-        style="width: 60%; font-size: large"
-      >
-        KNOW YOUR STAFF!
-      </button>
       <br />
-      <br />
+      <br /><br />
       <button
         type="button"
         class="btn btn-info"
-        [routerLink]="['/add-fp']"
+        [routerLink]="['/addStaff']"
         style="width: 60%; font-size: large"
       >
-        ADD NEW FOOD PRODUCT IN THE MENU
+        HIRE NEW STAFF
       </button>
       <br />
       <br />
       <h4 style="color: black">Here is the whole Menu of your place!</h4>
       <table class="table table-hover table-bordered">
         <caption>
-          List of Food Products in Menu
+          List of Staff Members
         </caption>
         <thead class="table-dark">
           <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Availability</th>
-            <th scope="col">About</th>
-            <th scope="col">Price</th>
-            <th scope="col">Edit Product</th>
-            <th scope="col">Delete Product</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Edit Staff Details</th>
+            <th scope="col">Fire Staff</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let r of result.data.foodProducts">
+          <tr *ngFor="let r of allStaff">
             <td>{{ r.id }}</td>
             <td>{{ r.name }}</td>
-            <td>{{ r.type }}</td>
-            <td>{{ r.availability ? "yes" : "no" }}</td>
-            <!-- <td>yes</td> -->
-            <td>{{ r.about }}</td>
-            <td>{{ r.price }}</td>
+            <td>{{ r.email }}</td>
             <td>
               <button
                 type="button"
                 class="btn btn-info"
                 style="width: 100px"
-                [routerLink]="['/edit-fp/', r.id]"
+                [routerLink]="['/editStaff/', r.id]"
               >
                 Edit
               </button>
@@ -103,28 +85,18 @@
                 type="button"
                 class="btn btn-danger"
                 style="width: 100px"
-                (click)="deletefp(r.id)"
+                (click)="deleteStaff(r.id)"
               >
-                Delete
+                Fire
               </button>
             </td>
           </tr>
         </tbody>
       </table>
-      <h2 style="color: red" *ngIf="menuFlag">
-        Oops!😔 There are no food items in the menu. <br />
-        Care to add some?!
+      <h2 style="color: red" *ngIf="staffFlag">
+        Oops!😔 There are no Staff to work under you! <br />
+        Care to Hire some?!
       </h2>
     </div>
   </div>
 </div>
-
-<footer class="text-center text-white" style="background-color: #caced1">
-  <div
-    class="text-center text-dark p-3"
-    style="background-color: rgba(0, 0, 0, 0.2); position: relative"
-  >
-    © 2022 Copyright:
-    <a class="text-dark" href="#">Developed by Group 1</a>
-  </div>
-</footer>
