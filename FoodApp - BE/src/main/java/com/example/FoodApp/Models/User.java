@@ -25,7 +25,7 @@ public class User {
 	private String password;
 	private String role;
 
-	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
 	@JsonIgnore
 	Menu menu;
 //	

@@ -32,7 +32,7 @@
     </div>
 
     <div class="mb-3">
-      <div class="form-check">
+      <!-- <div class="form-check">
         <input
           class="form-check-input"
           type="checkbox"
@@ -44,7 +44,7 @@
         <label class="form-check-label" for="flexCheckDefault"
           >Is available?</label
         >
-      </div>
+      </div> -->
 
       <div class="container">
         <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
@@ -108,15 +108,13 @@
           <div class="mb-3">
             <div class="form-check">
               <input
-                class="form-check-input"
-                type="checkbox"
-                value="false"
-                id="flexCheckDefault"
-                checked
-                name="availability"
-                #avail="ngModel"
-                [(ngModel)]="selectedProduct.availability"
-              />
+              class="form-check-input"
+              type="checkbox"
+              id="flexCheckDefault"
+              name="availability"
+              #availability="ngModel"
+              [(ngModel)]="selectedProduct.availability"
+            />
               <label class="form-check-label" for="flexCheckDefault"
                 >Is available?</label
               >

@@ -109,11 +109,19 @@ public class UserService {
 		ResponseStructure<User> structure = new ResponseStructure<>();
 		int existingUserId = user.getId();
 		User existingUser = userDao.getUserById(existingUserId).get();
-		Menu menu = existingUser.getMenu();
+//		Menu menu = existingUser.getMenu();
+//		    user.setMenu(menu);
+//			structure.setError(false);
+//			structure.setMessage("Updated Successfully");
+//			structure.setData(userDao.updateUser(user));
+			
+		if(existingUser.getRole().equals("BranchManager")) {
+			Menu menu = existingUser.getMenu();
 		    user.setMenu(menu);
-			structure.setError(false);
-			structure.setMessage("Updated Successfully");
-			structure.setData(userDao.updateUser(user));
+		}
+		structure.setError(false);
+		structure.setMessage("User updated");
+		structure.setData(userDao.updateUser(user));
 		return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
 	}
 	
