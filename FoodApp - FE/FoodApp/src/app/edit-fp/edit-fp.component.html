@@ -71,12 +71,10 @@
         <input
           class="form-check-input"
           type="checkbox"
-          value="false"
           id="flexCheckDefault"
-          checked
-          name="avail"
-          #avail="ngModel"
-          [(ngModel)]="selectedProduct.available"
+          name="availability"
+          #availability="ngModel"
+          [(ngModel)]="selectedProduct.availability"
         />
         <label class="form-check-label" for="flexCheckDefault"
           >Is available?</label
