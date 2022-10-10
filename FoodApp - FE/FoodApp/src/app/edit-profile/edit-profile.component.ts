@@ -45,7 +45,7 @@ export class EditProfileComponent implements OnInit {
       console.log(this.selectedUser);
 
       alert(this.res.message);
-      this.router.navigate(['/home']);
+      this.router.navigate(['/login']);
     });
   }
 }
