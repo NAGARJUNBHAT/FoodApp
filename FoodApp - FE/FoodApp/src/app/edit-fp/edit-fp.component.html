@@ -31,6 +31,22 @@
       />
     </div>
 
+    <div class="mb-3">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckDefault"
+          name="availability"
+          #availability="ngModel"
+          [(ngModel)]="selectedProduct.availability"
+        />
+        <label class="form-check-label" for="flexCheckDefault"
+          >Is available?</label
+        >
+      </div>
+
+
     <div class="container">
       <form #editForm="ngForm" (ngSubmit)="OnSubmit(editForm)">
         <div class="mb-3">
