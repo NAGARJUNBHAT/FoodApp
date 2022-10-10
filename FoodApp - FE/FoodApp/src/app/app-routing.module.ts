@@ -1,3 +1,7 @@
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditStaffComponent } from './edit-staff/edit-staff.component';
+import { AddStaffComponent } from './add-staff/add-staff.component';
+import { MangStaffComponent } from './mang-staff/mang-staff.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
 import { StaffComponent } from './staff/staff.component';
 import { LoginComponent } from './login/login.component';
@@ -21,7 +25,11 @@ const routes: Routes = [
   { path: 'edit-fp/:id', component: EditFpComponent },
   { path: 'create-order', component: CreateOrderComponent },
   { path: 'edit-order/:id', component: EditOrderComponent },
-  { path: 'bill/:id', component: BillComponent}
+  { path: 'bill/:id', component: BillComponent },
+  { path: 'showStaff', component: MangStaffComponent },
+  { path: 'addStaff', component: AddStaffComponent },
+  { path: 'editStaff/:id', component: EditStaffComponent },
+  { path: 'editProfile/:id', component: EditProfileComponent },
 ];
 
 @NgModule({

@@ -1,0 +1,130 @@
+<div
+  class="registerPage"
+  style="
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url(../../assets/img/staff.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  "
+>
+  <section class="h-0 h-custom">
+    <div class="container py-5 h-0">
+      <div class="row d-flex justify-content-center align-items-center h-0">
+        <div class="col-lg-8 col-xl-6">
+          <div class="card rounded-3">
+            <img
+              src="../../assets/img/staff.jpg"
+              class="w-100"
+              style="
+                border-top-left-radius: 0.3rem;
+                border-top-right-radius: 0.3rem;
+              "
+              alt="Sample photo"
+            />
+            <div class="card-body p-3 p-md-3">
+              <h3
+                class="mb-4 pb-3 pb-md-0 mb-md-3 px-md-2"
+                style="text-align: center"
+              >
+                <h4>Enter the Details of the Staff</h4>
+              </h3>
+              <form #regForm="ngForm" (ngSubmit)="addStaff(regForm)">
+                <div class="mb-3">
+                  <label for="Name" class="form-label"
+                    >Enter The Name of the Staff</label
+                  >
+                  <input
+                    name="name"
+                    #name="ngModel"
+                    ngModel
+                    type="text"
+                    class="form-control"
+                    id="inputName"
+                    placeholder="Enter your name here"
+                    required
+                  />
+                  <span *ngIf="name.invalid && name.touched" style="color: red"
+                    >Name required</span
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label for="Email" class="form-label"
+                    >Enter The Staff Email address</label
+                  >
+                  <input
+                    name="email"
+                    #email="ngModel"
+                    ngModel
+                    type="email"
+                    class="form-control"
+                    id="inputEmail"
+                    placeholder="Enter your email address here"
+                    pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+                    required
+                  />
+                  <span
+                    *ngIf="email.invalid && email.touched"
+                    style="color: red"
+                    >Invalid email</span
+                  >
+                </div>
+
+                <div class="mb-3">
+                  <label for="Password" class="form-label"
+                    >Here is the Default Password</label
+                  >
+                  <input
+                    name="password"
+                    #password="ngModel"
+                    ngModel
+                    type="password"
+                    class="form-control"
+                    id="inputPassword"
+                    placeholder="newStaff"
+                    disabled
+                  />
+                  <span
+                    *ngIf="password.invalid && password.touched"
+                    style="color: red"
+                    >Password required</span
+                  >
+                </div>
+
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  [disabled]="!regForm.valid"
+                  style="width: 100%"
+                >
+                  Hire New Staff
+                </button>
+                <br />
+                <br />
+                <button class="btn btn-info" style="width: 100%">
+                  <a
+                    href="/showStaff"
+                    style="text-decoration: none; color: black"
+                    >Back to Staff Page</a
+                  >
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<footer class="text-center text-white" style="background-color: #caced1">
+  <div
+    class="text-center text-dark p-3"
+    style="background-color: rgba(0, 0, 0, 0.2); position: relative"
+  >
+    © 2022 Copyright:
+    <a class="text-dark" href="#">Developed by Group 1</a>
+  </div>
+</footer>
