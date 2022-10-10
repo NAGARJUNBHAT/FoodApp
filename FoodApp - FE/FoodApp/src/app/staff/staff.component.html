@@ -1,115 +1,137 @@
 <div
-  class="jumbotron"
+  class="registerPage"
   style="
-    padding: 10px;
-    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url(../../assets/img/back.jpg);
-    background-size: cover;
-    height: 20vh;
+    width: 100%;
+    height: 150vh;
+    background: white;
+    background-position: center;
     background-repeat: no-repeat;
-    color: white;
-    text-align: center;
+    background-size: cover;
   "
 >
-  <div class="jumbotron-text" style="margin-top: 20px; font-size: x-large">
-    <h2>
-      {{ staff.name }}<br />
-      {{ staff.email }}<br />
-    </h2>
-    <br /><br />
-    <button
-      type="button"
-      class="btn btn-dark btn-lg btn-block"
-      (click)="logout()"
-    >
-      Logout
-    </button>
-    <br /><br />
-  </div>
-  <div class="container">
-    <div class="orders" style="margin-top: 30px">
-      <div class="input-group">
-        <input
-          type="search"
-          class="form-control rounded"
-          placeholder="Search for a particular Order"
-          aria-label="Search"
-          aria-describedby="search-addon"
-          [(ngModel)]="searchOrder"
-        />
-        
-      </div>
+  <div
+    class="jumbotron"
+    style="
+      padding: 10px;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+        url(../../assets/img/back.jpg);
+      background-size: cover;
+      height: 30vh;
+      background-repeat: no-repeat;
+      color: white;
+      text-align: center;
+    "
+  >
+    <div class="jumbotron-text" style="margin-top: 20px; font-size: x-large">
+      <h2>
+        {{ staff.name }}<br />
+        {{ staff.email }}<br />
+      </h2>
       <br /><br />
       <button
         type="button"
-        class="btn btn-info btn-block"
-        [routerLink]="['/create-order']"
-        style="width: 100%; font-size: xx-large; margin-bottom: 10px"
+        class="btn btn-danger btn-lg btn-block"
+        style="width: 60%"
+        (click)="logout()"
       >
-        Create New Food Order
+        LOGOUT OF THE ACCOUNT
       </button>
-      <div class="row row-cols-1 row-cols-md-4 g-2">
-        <!-- ngFor in this div to repeat the cards -->
-        <div class="col" *ngFor="let fo of allOrders.data | filter : searchOrder">
-          <div class="card">
-            <div class="card-body" style="color: black">
-              <img
-                src="../../assets/img/order.jpg"
-                class="card-img-top"
-                alt="Error Loading Image"
-                height="300px"
-              />
-              <h5 class="card-title">Order ID : {{ fo.id }}</h5>
-              <h6>Name of the Customer : {{ fo.customerName }}</h6>
-              <h6>Contact Number : {{ fo.contactNumber }}</h6>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                Total Amount of the Order : {{ fo.totalPrice }}
-              </li>
-              <li class="list-group-item">
-                Created At : {{ fo.orderCreatedTime }}
-              </li>
-              <li class="list-group-item" >
-                Delivered At : {{ fo.orderDeliveryTime }}
-              </li>
-              <div
-                class="card-footer text-success"
-                style="text-align: center; font-size: xx-large"
-              >
-              <select class="form-control" id="inputSelect" name="status" [(ngModel)]="fo.status" (ngModelChange)="changeStatus($event,fo.id)">
-                <option value="confirmed" >Confirmed</option>
-                <option value="delivered">Delivered</option>
-                <option value="process">In Process</option>
-              </select>
-              
-                <!-- {{ fo.status ? "Active" : "InActive" }} -->
-            </div>
-            </ul>
+      <br /><br />
+    </div>
+    <div class="container">
+      <div class="orders" style="margin-top: 30px">
+        <button
+          type="button"
+          class="btn btn-info btn-block"
+          [routerLink]="['/create-order']"
+          style="width: 60%; font-size: large; margin-bottom: 20px"
+        >
+          Create A New Food Order
+        </button>
+        <div class="input-group">
+          <input
+            type="search"
+            class="form-control rounded"
+            placeholder="Search for a particular Order  (According to Customer Name)"
+            aria-label="Search"
+            aria-describedby="search-addon"
+            [(ngModel)]="searchOrder"
+          />
+        </div>
+        <br /><br />
 
-            <div class="card-body text-center">
-              <button
-                class="btn btn-warning"
-                style="width: 200px"
-                [routerLink]="['/bill/', fo.id]"
-              >
-                View Bill
-              </button><br /><br />
-              <button
-                class="btn btn-info"
-                style="width: 200px"
-                [routerLink]="['/edit-order/', fo.id]"
-              >
-                Edit the Order
-              </button>
-              <br /><br />
-              <button
-                class="btn btn-danger"
-                style="width: 200px"
-                (click)="deleteFoodOrder(fo.id)"
-              >
-                Delete the Order
-              </button>
+        <div class="row row-cols-1 row-cols-md-4 g-2">
+          <!-- ngFor in this div to repeat the cards -->
+          <div
+            class="col"
+            *ngFor="let fo of allOrders.data | filter: searchOrder"
+          >
+            <div class="card">
+              <div class="card-body" style="color: black">
+                <img
+                  src="../../assets/img/order.jpg"
+                  class="card-img-top"
+                  alt="Error Loading Image"
+                  height="300px"
+                />
+                <h5 class="card-title">Order ID : {{ fo.id }}</h5>
+                <h6>Name of the Customer : {{ fo.customerName }}</h6>
+                <h6>Contact Number : {{ fo.contactNumber }}</h6>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Total Amount of the Order : {{ fo.totalPrice }}
+                </li>
+                <li class="list-group-item">
+                  Created At : {{ fo.orderCreatedTime }}
+                </li>
+                <li class="list-group-item">
+                  Delivered At : {{ fo.orderDeliveryTime }}
+                </li>
+                <div
+                  class="card-footer text-success"
+                  style="text-align: center; font-size: xx-large"
+                >
+                  <select
+                    class="form-control"
+                    id="inputSelect"
+                    name="status"
+                    [(ngModel)]="fo.status"
+                    (ngModelChange)="changeStatus($event, fo.id)"
+                  >
+                    <option value="confirmed">Confirmed</option>
+                    <option value="delivered">Delivered</option>
+                    <option value="process">In Process</option>
+                  </select>
+
+                  <!-- {{ fo.status ? "Active" : "InActive" }} -->
+                </div>
+              </ul>
+
+              <div class="card-body text-center">
+                <button
+                  class="btn btn-warning"
+                  style="width: 200px"
+                  [routerLink]="['/bill/', fo.id]"
+                >
+                  View Bill</button
+                ><br /><br />
+                <button
+                  class="btn btn-info"
+                  style="width: 200px"
+                  [routerLink]="['/edit-order/', fo.id]"
+                >
+                  Edit the Order
+                </button>
+                <br /><br />
+                <button
+                  class="btn btn-danger"
+                  style="width: 200px"
+                  (click)="deleteFoodOrder(fo.id)"
+                >
+                  Delete the Order
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -117,3 +139,12 @@
     </div>
   </div>
 </div>
+<footer class="text-center text-white" style="background-color: #caced1">
+  <div
+    class="text-center text-dark p-3"
+    style="background-color: rgba(0, 0, 0, 0.2); position: relative"
+  >
+    © 2022 Copyright:
+    <a class="text-dark" href="#">Developed by Group 1</a>
+  </div>
+</footer>

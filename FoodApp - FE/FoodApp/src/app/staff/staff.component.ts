@@ -8,14 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./staff.component.css'],
 })
 export class StaffComponent implements OnInit {
-
   searchOrder: any;
-  confirmed="confirmed";
-  delivered="delivered";
-  progress="progress";
-  deliveredTime:any;
+  confirmed = 'confirmed';
+  delivered = 'delivered';
+  progress = 'progress';
+  deliveredTime: any;
   response: any;
-  foodOrderId: Number= 0;
+  foodOrderId: Number = 0;
   constructor(private orders: StaffServiceService, private router: Router) {}
 
   allOrders: any;
@@ -43,29 +42,26 @@ export class StaffComponent implements OnInit {
     });
   }
 
-  changeStatus(status: string, id: number){
-    console.log(status,id);
-    this.orders.updateOrderStatus(status,id).subscribe((r)=>{
+  changeStatus(status: string, id: number) {
+    console.log(status, id);
+    this.orders.updateOrderStatus(status, id).subscribe((r) => {
       console.log(r);
-      this.response=r;
-      if(!this.response.error){
-        alert("Order status updated to: "+status);
-        // if(this.response.data.status=="delivered"){
-        //   this.deliveredTime = this.response.data.orderDeliveryTime;
-        //   console.log(this.deliveredTime);
-        // }
-      }
-      else{
+      this.response = r;
+      if (!this.response.error) {
+        alert('Order status updated to: ' + status);
+        if (this.response.data.status == 'delivered') {
+          this.deliveredTime = this.response.data.orderDeliveryTime;
+          console.log(this.deliveredTime);
+          window.location.reload();
+        }
+      } else {
         alert("Couldn't update status. Try again later! ");
       }
-    })
-    
+    });
   }
-
 
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
-
 }

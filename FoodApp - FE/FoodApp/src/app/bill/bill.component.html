@@ -1,46 +1,81 @@
-<div class="card">
-    <div class="card-body mx-4">
-        <div class="container">
-            <p><b>Customer Name:</b><br />
-            {{orderDetails.data.customerName}}</p>
-            <p><b>Contact Number:</b><br />
-            {{orderDetails.data.contactNumber}}</p>            
-        </div>
-      <div class="container">
-        <table class="table">
-            <thead class="table-dark">
-              <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Type</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
-                <th scope="col">Total</th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let r of result.data">
-              <tr *ngIf="r.quantity>0">
-                <td>{{ r.id }}</td>
-                <td>{{ r.name }}</td>
-                <td>{{ r.type }}</td>
-                <td>{{ r.quantity }}</td>
-                <td>{{ r.price }}</td>
-                <td>{{ r.price*r.quantity}}</td>
-            </tbody>
-
-        </table>
-        
-        <div class="row" style="margin-right:60px;">
-            <div class="col-xl-12">
-
-              <p class="float-end"
-                style="font-size: 30px; color:black; font-weight: 200;">
-                Total Amount:
-                <span><i class="fas fa-dollar-sign"></i>{{orderDetails.data.totalPrice}}</span></p>
-            </div>
-    
-          </div>
-    
-        </div>
+<div
+  class="card"
+  style="
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: solid 2px black;
+    background-color: aliceblue;
+  "
+>
+  <div class="card-body mx-4">
+    <div class="container">
+      <div style="text-align: center">
+        <img
+          src="../../assets/img/logo3.png"
+          alt="Logo can't be loaded"
+          height="150px"
+        />
+        <h3>Thank you for Choosing Foodavo!</h3>
+        <h5>Here is your Invoice!</h5>
+      </div>
+      <p>
+        <b>Customer Name:</b><br />
+        {{ orderDetails.data.customerName }}
+      </p>
+      <p>
+        <b>Contact Number:</b><br />
+        {{ orderDetails.data.contactNumber }}
+      </p>
     </div>
-</div>  
+    <div class="container">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <!-- <th scope="col">Id</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let r of result.data">
+          <tr *ngIf="r.quantity > 0">
+            <!-- <td>{{ r.id }}</td> -->
+            <td>{{ r.name }}</td>
+            <td>{{ r.type }}</td>
+            <td>{{ r.quantity }}</td>
+            <td>{{ r.price }}</td>
+            <td>{{ r.price * r.quantity }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row" style="margin-right: 60px">
+        <div class="col-xl-12">
+          <p
+            class="float-end"
+            style="font-size: 30px; color: black; font-weight: 200"
+          >
+            Total Amount:
+            <span
+              ><i class="fas fa-dollar-sign"></i
+              >{{ orderDetails.data.totalPrice }}</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    class="btn btn-dark"
+    style="width: 100%; border-radius: 0"
+    (click)="printInvoice()"
+  >
+    Print Invoice
+  </button>
+</div>

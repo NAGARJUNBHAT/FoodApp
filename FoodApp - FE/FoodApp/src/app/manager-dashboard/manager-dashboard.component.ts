@@ -10,6 +10,7 @@ import { ManagerServiceService } from '../Services/manager-service.service';
 export class ManagerDashboardComponent implements OnInit {
   flag: boolean = false;
   result: any;
+  menuFlag = true;
 
   manager = JSON.parse(localStorage.getItem('user')!);
   my_menu: any;
@@ -19,6 +20,11 @@ export class ManagerDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.menu.getMenu(this.manager.id).subscribe((data) => {
       this.result = data;
+      if (this.result.data.foodProducts.length != 0) {
+        this.menuFlag = false;
+      } else {
+        this.menuFlag = true;
+      }
       console.log(this.result);
       console.log(this.manager);
       localStorage.setItem('my_menu', this.result.data.id);
@@ -42,9 +48,8 @@ export class ManagerDashboardComponent implements OnInit {
     }
   }
 
-
-  logout(){
+  logout() {
     localStorage.clear();
-    this.router.navigate(["/login"]);
+    this.router.navigate(['/login']);
   }
 }
