@@ -34,6 +34,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
   res: any;
+  user: any;
   OnSubmit(form: NgForm) {
     form.value.id = this.selectedUser.id;
     form.value.role = this.selectedUser.role;
@@ -45,7 +46,23 @@ export class EditProfileComponent implements OnInit {
       console.log(this.selectedUser);
 
       alert(this.res.message);
-      this.router.navigate(['/login']);
+      try {
+        this.user = JSON.parse(localStorage.getItem('user')!);
+        if (this.user.role != null) {
+          console.log(this.user);
+          let role = this.user.role;
+          if (role === 'staff') {
+            console.log('Staff Dashboard');
+            this.router.navigate(['staff']);
+          } else if (role === 'BranchManager') {
+            console.log('Manager Dashboard');
+            this.router.navigate(['manager']);
+          }
+        }
+      } catch (error) {
+        alert('Please Login First!');
+        this.router.navigate(['login']);
+      }
     });
   }
 }

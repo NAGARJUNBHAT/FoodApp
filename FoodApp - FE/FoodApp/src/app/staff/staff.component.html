@@ -98,6 +98,7 @@
                     name="status"
                     [(ngModel)]="fo.status"
                     (ngModelChange)="changeStatus($event, fo.id)"
+                    [disabled]="fo.status === delivered"
                   >
                     <option value="confirmed">Confirmed</option>
                     <option value="delivered">Delivered</option>
@@ -120,6 +121,7 @@
                   class="btn btn-info"
                   style="width: 200px"
                   [routerLink]="['/edit-order/', fo.id]"
+                  [disabled]="fo.status === delivered"
                 >
                   Edit the Order
                 </button>
@@ -135,7 +137,7 @@
             </div>
           </div>
         </div>
-        <footer
+        <!-- <footer
           class="text-center text-white"
           style="background-color: #caced1; margin-top: 10px"
         >
@@ -146,7 +148,7 @@
             © 2022 Copyright:
             <a class="text-dark" href="#">Developed by Group 1</a>
           </div>
-        </footer>
+        </footer> -->
       </div>
     </div>
   </div>

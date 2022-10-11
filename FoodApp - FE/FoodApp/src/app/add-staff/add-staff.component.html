@@ -16,7 +16,7 @@
         <div class="col-lg-8 col-xl-6">
           <div class="card rounded-3">
             <img
-              src="../../assets/img/staff.jpg"
+              src="../../assets/img/hire.jpg"
               class="w-100"
               style="
                 border-top-left-radius: 0.3rem;
@@ -104,14 +104,14 @@
                 </button>
                 <br />
                 <br />
-                <button class="btn btn-info" style="width: 100%">
-                  <a
-                    href="/showStaff"
-                    style="text-decoration: none; color: black"
-                    >Back to Staff Page</a
-                  >
-                </button>
               </form>
+              <button
+                class="btn btn-info"
+                style="width: 100%"
+                [routerLink]="['/showStaff']"
+              >
+                Back to Staff Page
+              </button>
             </div>
           </div>
         </div>
