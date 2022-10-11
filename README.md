@@ -5,5 +5,5 @@ The food industry is up and booming again with the support of technology. There 
 ## Diagram for the Application
 
 <div style="text-align:center">
-    <img src="./Diagram.jpg" height="300px">
+    <img src="./foodDeliveryFlowChart.png" height="300px">
 </div>
