@@ -41,7 +41,6 @@ export class StaffComponent implements OnInit {
       });
     });
   }
-
   changeStatus(status: string, id: number) {
     console.log(status, id);
     this.orders.updateOrderStatus(status, id).subscribe((r) => {
@@ -52,6 +51,7 @@ export class StaffComponent implements OnInit {
         if (this.response.data.status == 'delivered') {
           this.deliveredTime = this.response.data.orderDeliveryTime;
           console.log(this.deliveredTime);
+
           window.location.reload();
         }
       } else {

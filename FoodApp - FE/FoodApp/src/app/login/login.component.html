@@ -74,24 +74,26 @@
                       >Password required</span
                     >
                   </div>
-
-                  <button
-                    type="submit"
-                    class="btn btn-success"
-                    style="width: 100%"
-                    [disabled]="!loginForm.valid"
-                  >
-                    Log In to your Account
-                  </button>
-
-                  <br /><br />
-                  <button class="btn btn-info" style="width: 100%">
-                    <a href="/" style="text-decoration: none; color: black"
-                      >Back to HomePage</a
-                    >
-                  </button>
                 </div>
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  style="width: 100%"
+                  [disabled]="!loginForm.valid"
+                >
+                  Log In to your Account
+                </button>
+
+                <br />
+                <br />
               </form>
+              <button
+                class="btn btn-info"
+                style="width: 100%"
+                [routerLink]="['']"
+              >
+                Back to HomePage
+              </button>
             </div>
           </div>
         </div>
